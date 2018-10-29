@@ -44,7 +44,7 @@ Builds the app for production to the `build` folder. It correctly bundles React 
 
 #### `yarn cypress:open`
 
-Opens the cypress window where you can select a cypress tests to run
+Opens the cypress window where you can select a cypress tests to run.
 
 ## What our site does
 
@@ -74,7 +74,8 @@ What happens when you search...
 
 ### Project structure
 
-Lorem ipsum ...
+We’ve split our child components into the folders “components” and “containers”, following the pattern suggested here:  
+[Dan Abramov on smart & dumb components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
 ### Content of app
 
@@ -90,15 +91,29 @@ Lorem ipsum ...
 
 ### AJAX
 
-### GraphQL
-
-### Relay (GraphQL)
-
-Lorem ipsum ...
+We have used the Fetch API with async/await that comes with ES7 to handle asynchronous fetching. The data is saved in Redux ...
 
 ### Express
 
+Lorem ipsum ... What is Express used for...
+
+### GraphQL
+
 Lorem ipsum ...
+[https://www.apollographql.com/](https://www.apollographql.com/)
+
+#### GraphQL client (frontend)
+
+Lorem ipsum ...
+
+[https://www.apollographql.com/client](https://www.apollographql.com/client)
+and [apollo react](https://www.apollographql.com/docs/react/)
+
+#### GraphQL server (backend)
+
+Lorem ipsum ...
+[apollo-server docs](https://www.apollographql.com/docs/apollo-server/)
+and [apollo-server-express](https://www.apollographql.com/docs/apollo-server/servers/express.html)
 
 ### Fontawesome's official React component for icons
 
