@@ -38,6 +38,10 @@ The page will reload if you make edits. You will also see any lint errors in the
 
 Launches the test runner in the interactive watch mode. Runs all the `Jest` tests.
 
+#### `yarn server:dev`
+
+Run the GraphQL development server.
+
 #### `yarn build`
 
 Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
