@@ -11,7 +11,8 @@
       "Speed": 45
     },
     "img": "https://img.pokemondb.net/artwork/bulbasaur.jpg",
-    "type": ["Grass", "Poison"]
+    "primary": "Grass",
+    "secondary": "Poison"
   },
   {
     "name": "Ivysaur",
@@ -25,7 +26,8 @@
       "Speed": 60
     },
     "img": "https://img.pokemondb.net/artwork/ivysaur.jpg",
-    "type": ["Grass", "Poison"]
+    "primary": "Grass",
+    "secondary": "Poison"
   },
   {
     "name": "Venusaur",
@@ -39,7 +41,8 @@
       "Speed": 80
     },
     "img": "https://img.pokemondb.net/artwork/venusaur.jpg",
-    "type": ["Grass", "Poison"]
+    "primary": "Grass",
+    "secondary": "Poison"
   },
   {
     "name": "Charmander",
@@ -53,7 +56,7 @@
       "Speed": 65
     },
     "img": "https://img.pokemondb.net/artwork/charmander.jpg",
-    "type": ["Fire"]
+    "primary": "Fire"
   },
   {
     "name": "Charmeleon",
@@ -67,7 +70,7 @@
       "Speed": 80
     },
     "img": "https://img.pokemondb.net/artwork/charmeleon.jpg",
-    "type": ["Fire"]
+    "primary": "Fire"
   },
   {
     "name": "Charizard",
@@ -81,7 +84,8 @@
       "Speed": 100
     },
     "img": "https://img.pokemondb.net/artwork/charizard.jpg",
-    "type": ["Fire", "Flying"]
+    "primary": "Fire",
+    "secondary": "Flying"
   },
   {
     "name": "Squirtle",
@@ -95,7 +99,7 @@
       "Speed": 43
     },
     "img": "https://img.pokemondb.net/artwork/squirtle.jpg",
-    "type": ["Water"]
+    "primary": "Water"
   },
   {
     "name": "Wartortle",
@@ -109,7 +113,7 @@
       "Speed": 58
     },
     "img": "https://img.pokemondb.net/artwork/wartortle.jpg",
-    "type": ["Water"]
+    "primary": "Water"
   },
   {
     "name": "Blastoise",
@@ -123,7 +127,7 @@
       "Speed": 78
     },
     "img": "https://img.pokemondb.net/artwork/blastoise.jpg",
-    "type": ["Water"]
+    "primary": "Water"
   },
   {
     "name": "Caterpie",
@@ -137,7 +141,7 @@
       "Speed": 45
     },
     "img": "https://img.pokemondb.net/artwork/caterpie.jpg",
-    "type": ["Bug"]
+    "primary": "Bug"
   },
   {
     "name": "Metapod",
@@ -151,7 +155,7 @@
       "Speed": 30
     },
     "img": "https://img.pokemondb.net/artwork/metapod.jpg",
-    "type": ["Bug"]
+    "primary": "Bug"
   },
   {
     "name": "Butterfree",
@@ -165,7 +169,8 @@
       "Speed": 70
     },
     "img": "https://img.pokemondb.net/artwork/butterfree.jpg",
-    "type": ["Bug", "Poison"]
+    "primary": "Bug",
+    "secondary": "Poison"
   },
   {
     "name": "Pidgey",
@@ -179,7 +184,8 @@
       "Speed": 56
     },
     "img": "https://img.pokemondb.net/artwork/pidgey.jpg",
-    "type": ["Normal", "Flying"]
+    "primary": "Normal",
+    "secondary": "Flying"
   },
   {
     "name": "Pikachu",
@@ -193,7 +199,7 @@
       "Speed": 90
     },
     "img": "https://img.pokemondb.net/artwork/pikachu.jpg",
-    "type": ["Electric"]
+    "primary": "Electric"
   },
   {
     "name": "Sandshrew",
@@ -207,7 +213,7 @@
       "Speed": 40
     },
     "img": "https://img.pokemondb.net/artwork/sandshrew.jpg",
-    "type": ["Ground"]
+    "primary": "Ground"
   },
   {
     "name": "Clefairy",
@@ -221,7 +227,7 @@
       "Speed": 35
     },
     "img": "https://img.pokemondb.net/artwork/clefairy.jpg",
-    "type": ["Fairy"]
+    "primary": "Fairy"
   },
   {
     "name": "Vulpix",
@@ -235,7 +241,7 @@
       "Speed": 65
     },
     "img": "https://img.pokemondb.net/artwork/vulpix.jpg",
-    "type": ["Fire"]
+    "primary": "Fire"
   },
   {
     "name": "Geodude",
@@ -249,7 +255,8 @@
       "Speed": 20
     },
     "img": "https://img.pokemondb.net/artwork/geodude.jpg",
-    "type": ["Rock", "Ground"]
+    "primary": "Rock",
+    "secondary": "Ground"
   },
   {
     "name": "Jynx",
@@ -263,7 +270,8 @@
       "Speed": 95
     },
     "img": "https://img.pokemondb.net/artwork/jynx.jpg",
-    "type": ["Ice", "Psychic"]
+    "primary": "Ice",
+    "secondary": "Psychic"
   },
   {
     "name": "Mankey",
@@ -277,7 +285,7 @@
       "Speed": 70
     },
     "img": "https://img.pokemondb.net/artwork/mankey.jpg",
-    "type": ["Fighting"]
+    "primary": "Fighting"
   },
   {
     "name": "Gastly",
@@ -291,7 +299,8 @@
       "Speed": 80
     },
     "img": "https://img.pokemondb.net/artwork/gastly.jpg",
-    "type": ["Ghost", "Poison"]
+    "primary": "Ghost",
+    "secondary": "Poison"
   },
   {
     "name": "Dratini",
@@ -305,7 +314,7 @@
       "Speed": 50
     },
     "img": "https://img.pokemondb.net/artwork/dratini.jpg",
-    "type": ["Dragon"]
+    "primary": "Dragon"
   },
   {
     "name": "Murkrow",
@@ -319,7 +328,8 @@
       "Speed": 91
     },
     "img": "https://img.pokemondb.net/artwork/murkrow.jpg",
-    "type": ["Dark", "Flying"]
+    "primary": "Dark",
+    "secondary": "Flying"
   },
   {
     "name": "Magnemite",
@@ -333,6 +343,7 @@
       "Speed": 45
     },
     "img": "https://img.pokemondb.net/artwork/magnemite.jpg",
-    "type": ["Electric", "Steel"]
+    "primary": "Electric",
+    "secondary": "Steel"
   }
 ]
