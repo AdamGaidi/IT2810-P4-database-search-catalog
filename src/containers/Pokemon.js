@@ -1,6 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import PokemonItem from "components/PokemonItem";
 
 const Pokemon = () => (
   <Query
@@ -8,7 +9,9 @@ const Pokemon = () => (
       {
         pokemon {
           name
-          type
+          src
+          stars
+          types
         }
       }
     `}
@@ -18,10 +21,15 @@ const Pokemon = () => (
 
       if (error) return <p>Error :(</p>;
 
-      return data.pokemon.map(({ name, type }) => (
-        <div key={`${name}${type}`}>
-          <p>{`${name} : ${type}`}</p>
-        </div>
+      return data.pokemon.map(({ name, types, stars, src }, i) => (
+        <PokemonItem
+          key={name + i}
+          src={src}
+          stars={stars}
+          hasStarred={false}
+          name={name}
+          types={types}
+        />
       ));
     }}
   </Query>

@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { exampleAction } from "actions/exampleAction";
 
 import SearchForm from "containers/SearchForm";
+import Pokemon from "containers/Pokemon";
+import LoadButton from "components/LoadButton";
 
 import "./App.css";
 
@@ -23,6 +25,8 @@ class App extends Component {
 
           <main className="App__main-content">
             <SearchForm />
+            <Pokemon />
+            <LoadButton />
           </main>
         </div>
         <footer className="App__footer">
