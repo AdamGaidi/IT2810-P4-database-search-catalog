@@ -1,0 +1,37 @@
+.Radiobutton input[type="radio" i] {
+  margin-top: 0;
+}
+
+.Radiobutton {
+  color: var(--dark-gray);
+  padding: 3px 0;
+  display: inline-flex;
+  align-items: center;
+  text-transform: capitalize;
+  flex-basis: 16.666667%;
+  margin: 0.1rem 1rem 0.1rem 0;
+}
+
+@media only screen and (max-width: 700px) {
+  .Radiobutton {
+    flex-basis: 20%;
+  }
+}
+@media only screen and (max-width: 580px) {
+  .Radiobutton {
+    flex-basis: 33.333%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .Radiobutton {
+    flex-basis: 50%;
+  }
+}
+
+.Radiobutton__icon {
+}
+
+.Radiobutton__label {
+  margin-left: 0.5rem;
+  letter-spacing: 1px;
+}

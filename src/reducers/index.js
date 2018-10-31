@@ -1,4 +1,6 @@
 import { combineReducers } from "redux";
+import { reducer as reduxFormReducer } from "redux-form";
+
 import pokemon from "./pokemon";
 import test from "./test";
 import test2 from "./test2";
@@ -7,5 +9,6 @@ import test2 from "./test2";
 export default combineReducers({
   pokemon,
   test,
-  test2
+  test2,
+  form: reduxFormReducer
 });

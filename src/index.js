@@ -11,7 +11,8 @@ import rootReducer from "reducers";
 import { Provider } from "react-redux";
 
 import "./index.css";
-import App from "containers/App";
+import "./constants.css";
+import App from "./App";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
