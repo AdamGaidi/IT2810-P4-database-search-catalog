@@ -1,0 +1,36 @@
+.App {
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.App__header {
+  margin: 1.5rem auto;
+  max-width: var(--max-width);
+}
+
+.App__title {
+  text-align: center;
+  color: var(--dark-gray);
+}
+
+.App__main-content {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.App__footer {
+  padding: 1rem 5rem;
+  background: var(--dark-gray);
+  width: 100%;
+}
+
+.App__footer-content {
+  max-width: var(--max-width);
+  margin: auto;
+  text-align: center;
+  color: var(--light-gray);
+}

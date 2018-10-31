@@ -1,0 +1,15 @@
+:root {
+  /* Colors used in the app */
+  --light-gray: #efefef; /* background color */
+  --gray: #a7a7a7; /* Used for help text, etc. */
+  --dark-gray: #757575; /* primary gray color*/
+  --yellow: #f8d030; /* Used for star */
+  --white: #fff; /* Used for background in cards */
+
+  /* Max width of the content on the page*/
+  --max-width: 45rem;
+
+  /* Fonts */
+  --raleway: "Raleway", sans-serif;
+  --roboto: "Roboto", sans-serif;
+}

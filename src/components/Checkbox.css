@@ -1,0 +1,33 @@
+.Checkbox {
+  color: var(--dark-gray);
+  display: inline-flex;
+  align-items: center;
+  text-transform: capitalize;
+  flex-basis: 16.666667%;
+}
+
+@media only screen and (max-width: 700px) {
+  .Checkbox {
+    flex-basis: 20%;
+  }
+}
+@media only screen and (max-width: 580px) {
+  .Checkbox {
+    flex-basis: 33.333%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .Checkbox {
+    flex-basis: 50%;
+  }
+}
+
+.Checkbox__icon {
+}
+
+.Checkbox__label {
+  margin-left: 0.5rem;
+  letter-spacing: 1px;
+  width: 100%;
+  padding: 0.3rem 0;
+}
