@@ -14,6 +14,7 @@
 .App__title {
   text-align: center;
   color: var(--dark-gray);
+  margin: 2.5rem;
 }
 
 .App__main-content {
@@ -23,6 +24,7 @@
 }
 
 .App__footer {
+  margin-top: 2rem;
   padding: 1rem 5rem;
   background: var(--dark-gray);
   width: 100%;

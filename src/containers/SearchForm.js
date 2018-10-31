@@ -9,13 +9,13 @@ import Card from "components/Card";
 import "./SearchForm.css";
 
 const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {
-  const types = pokemonTypes.map((type, i) => (
-    <Checkbox key={type + i} type={type} />
-  ));
+  const types = Object.keys(pokemonTypes).map((type, i) => {
+    return <Checkbox key={type + i} type={type} />;
+  });
 
   return (
     <form onSubmit={handleSubmit}>
-      <Card>
+      <Card margin="1rem 0">
         <div className="SearchForm__search-bar">
           <div className="SearchForm__search-bar-input-border">
             <Field
@@ -37,12 +37,12 @@ const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {
           </button>
         </div>
         <p className="SearchForm__help-text">
-          Try searching for "grass" of "pikachu", or write nothing at all to get
+          Try searching for "grass" or "pikachu", or write nothing at all to get
           everything
         </p>
       </Card>
 
-      <Card>
+      <Card margin="1rem 0">
         <div>
           <header className="SearchForm__options-header">
             <FontAwesome

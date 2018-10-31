@@ -1,0 +1,57 @@
+.PokemonItem {
+  display: flex;
+  align-items: center;
+}
+
+.PokemonItem__img {
+  max-width: 3rem;
+  object-fit: scale-down;
+  display: inline-block;
+}
+
+.PokemonItem__name {
+  color: var(--dark-gray);
+  flex-basis: 32%;
+  padding: 0 1rem;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.PokemonItem__stars {
+  color: var(--gray);
+  margin: 5px 5px 5px 0;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-family: var(--roboto);
+  flex-basis: 4rem;
+}
+
+.PokemonItem__star-icon {
+  color: var(--yellow);
+  font-size: 1.3rem;
+  margin: 0 0.4rem 0 1rem;
+}
+
+.PokemonItem__types {
+  margin: 0 1rem;
+  display: flex;
+}
+
+.PokemonItem__show-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--gray);
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: auto;
+}
+
+.PokemonItem__show-more-icon {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1rem;
+}
