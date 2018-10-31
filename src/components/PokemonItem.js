@@ -9,6 +9,7 @@ const PokemonItem = ({ src, stars, hasStarred, name, types }) => {
   return (
     <Card className="PokemonItem">
       <img src={src} alt={name} className="PokemonItem__img" />
+
       <span className="PokemonItem__name">{name}</span>
 
       <div className="PokemonItem__stars">
@@ -23,8 +24,7 @@ const PokemonItem = ({ src, stars, hasStarred, name, types }) => {
       <div className="PokemonItem__types">
         {types &&
           types.map((type, i) => {
-            console.log(type);
-            return <Pill text={type} color={pokemonTypes[type]} />;
+            return <Pill key={type} text={type} color={pokemonTypes[type]} />;
           })}
       </div>
 

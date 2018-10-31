@@ -1,4 +1,5 @@
 import { gql } from "apollo-server-express";
+import _, { find } from "lodash";
 
 const pokemon = [
   {
@@ -31,13 +32,17 @@ export const typeDefs = gql`
 
   # The "Query" type is the root of all GraphQL queries.
   type Query {
-    pokemon: [Pokemon]
+    allPokemon: [Pokemon]
+    pokemon(name: String): Pokemon
   }
 `;
 
 // Resolvers define the technique for fetching the types in the schema.
 export const resolvers = {
   Query: {
-    pokemon: () => pokemon
+    allPokemon: () => pokemon,
+    pokemon: (root, args, context, info) => {
+      return find(pokemon, { name: _.capitalize(args.name) });
+    }
   }
 };

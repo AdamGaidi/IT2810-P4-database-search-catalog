@@ -5,6 +5,7 @@ import { exampleAction } from "actions/exampleAction";
 
 import SearchForm from "containers/SearchForm";
 import Pokemon from "containers/Pokemon";
+import PokemonDetail from "containers/PokemonDetail";
 import LoadButton from "components/LoadButton";
 
 import "./App.css";
@@ -26,6 +27,7 @@ class App extends Component {
           <main className="App__main-content">
             <SearchForm />
             <Pokemon />
+            <PokemonDetail />
             <LoadButton />
           </main>
         </div>

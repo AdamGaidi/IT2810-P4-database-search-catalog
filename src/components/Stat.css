@@ -1,0 +1,14 @@
+.Stat {
+  color: var(--dark-gray);
+  text-align: right;
+  min-width: 7rem;
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+  letter-spacing: 1px;
+}
+
+.Stat__number {
+  margin-left: 0.5rem;
+  font-weight: bold;
+  font-family: var(--roboto);
+}
