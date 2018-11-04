@@ -1,0 +1,349 @@
+[
+  {
+    "name": "Bulbasaur",
+    "id": "001",
+    "base": {
+      "Attack": 49,
+      "Defense": 49,
+      "HP": 45,
+      "Sp.Atk": 65,
+      "Sp.Def": 65,
+      "Speed": 45
+    },
+    "img": "https://img.pokemondb.net/artwork/bulbasaur.jpg",
+    "primary": "Grass",
+    "secondary": "Poison"
+  },
+  {
+    "name": "Ivysaur",
+    "id": "002",
+    "base": {
+      "Attack": 62,
+      "Defense": 63,
+      "HP": 60,
+      "Sp.Atk": 80,
+      "Sp.Def": 80,
+      "Speed": 60
+    },
+    "img": "https://img.pokemondb.net/artwork/ivysaur.jpg",
+    "primary": "Grass",
+    "secondary": "Poison"
+  },
+  {
+    "name": "Venusaur",
+    "id": "003",
+    "base": {
+      "Attack": 82,
+      "Defense": 83,
+      "HP": 80,
+      "Sp.Atk": 100,
+      "Sp.Def": 100,
+      "Speed": 80
+    },
+    "img": "https://img.pokemondb.net/artwork/venusaur.jpg",
+    "primary": "Grass",
+    "secondary": "Poison"
+  },
+  {
+    "name": "Charmander",
+    "id": "004",
+    "base": {
+      "Attack": 52,
+      "Defense": 42,
+      "HP": 39,
+      "Sp.Atk": 60,
+      "Sp.Def": 50,
+      "Speed": 65
+    },
+    "img": "https://img.pokemondb.net/artwork/charmander.jpg",
+    "primary": "Fire"
+  },
+  {
+    "name": "Charmeleon",
+    "id": "005",
+    "base": {
+      "Attack": 64,
+      "Defense": 58,
+      "HP": 58,
+      "Sp.Atk": 80,
+      "Sp.Def": 65,
+      "Speed": 80
+    },
+    "img": "https://img.pokemondb.net/artwork/charmeleon.jpg",
+    "primary": "Fire"
+  },
+  {
+    "name": "Charizard",
+    "id": "006",
+    "base": {
+      "Attack": 84,
+      "Defense": 78,
+      "HP": 78,
+      "Sp.Atk": 109,
+      "Sp.Def": 85,
+      "Speed": 100
+    },
+    "img": "https://img.pokemondb.net/artwork/charizard.jpg",
+    "primary": "Fire",
+    "secondary": "Flying"
+  },
+  {
+    "name": "Squirtle",
+    "id": "007",
+    "base": {
+      "Attack": 48,
+      "Defense": 65,
+      "HP": 44,
+      "Sp.Atk": 50,
+      "Sp.Def": 64,
+      "Speed": 43
+    },
+    "img": "https://img.pokemondb.net/artwork/squirtle.jpg",
+    "primary": "Water"
+  },
+  {
+    "name": "Wartortle",
+    "id": "008",
+    "base": {
+      "Attack": 63,
+      "Defense": 80,
+      "HP": 59,
+      "Sp.Atk": 65,
+      "Sp.Def": 80,
+      "Speed": 58
+    },
+    "img": "https://img.pokemondb.net/artwork/wartortle.jpg",
+    "primary": "Water"
+  },
+  {
+    "name": "Blastoise",
+    "id": "009",
+    "base": {
+      "Attack": 83,
+      "Defense": 100,
+      "HP": 79,
+      "Sp.Atk": 85,
+      "Sp.Def": 105,
+      "Speed": 78
+    },
+    "img": "https://img.pokemondb.net/artwork/blastoise.jpg",
+    "primary": "Water"
+  },
+  {
+    "name": "Caterpie",
+    "id": "010",
+    "base": {
+      "Attack": 30,
+      "Defense": 35,
+      "HP": 45,
+      "Sp.Atk": 20,
+      "Sp.Def": 20,
+      "Speed": 45
+    },
+    "img": "https://img.pokemondb.net/artwork/caterpie.jpg",
+    "primary": "Bug"
+  },
+  {
+    "name": "Metapod",
+    "id": "011",
+    "base": {
+      "Attack": 20,
+      "Defense": 55,
+      "HP": 50,
+      "Sp.Atk": 25,
+      "Sp.Def": 25,
+      "Speed": 30
+    },
+    "img": "https://img.pokemondb.net/artwork/metapod.jpg",
+    "primary": "Bug"
+  },
+  {
+    "name": "Butterfree",
+    "id": "012",
+    "base": {
+      "Attack": 45,
+      "Defense": 50,
+      "HP": 60,
+      "Sp.Atk": 90,
+      "Sp.Def": 80,
+      "Speed": 70
+    },
+    "img": "https://img.pokemondb.net/artwork/butterfree.jpg",
+    "primary": "Bug",
+    "secondary": "Poison"
+  },
+  {
+    "name": "Pidgey",
+    "id": "016",
+    "base": {
+      "Attack": 45,
+      "Defense": 40,
+      "HP": 40,
+      "Sp.Atk": 35,
+      "Sp.Def": 35,
+      "Speed": 56
+    },
+    "img": "https://img.pokemondb.net/artwork/pidgey.jpg",
+    "primary": "Normal",
+    "secondary": "Flying"
+  },
+  {
+    "name": "Pikachu",
+    "id": "025",
+    "base": {
+      "Attack": 55,
+      "Defense": 40,
+      "HP": 35,
+      "Sp.Atk": 50,
+      "Sp.Def": 50,
+      "Speed": 90
+    },
+    "img": "https://img.pokemondb.net/artwork/pikachu.jpg",
+    "primary": "Electric"
+  },
+  {
+    "name": "Sandshrew",
+    "id": "027",
+    "base": {
+      "Attack": 75,
+      "Defense": 85,
+      "HP": 50,
+      "Sp.Atk": 20,
+      "Sp.Def": 30,
+      "Speed": 40
+    },
+    "img": "https://img.pokemondb.net/artwork/sandshrew.jpg",
+    "primary": "Ground"
+  },
+  {
+    "name": "Clefairy",
+    "id": "035",
+    "base": {
+      "Attack": 45,
+      "Defense": 48,
+      "HP": 70,
+      "Sp.Atk": 60,
+      "Sp.Def": 65,
+      "Speed": 35
+    },
+    "img": "https://img.pokemondb.net/artwork/clefairy.jpg",
+    "primary": "Fairy"
+  },
+  {
+    "name": "Vulpix",
+    "id": "037",
+    "base": {
+      "Attack": 41,
+      "Defense": 40,
+      "HP": 38,
+      "Sp.Atk": 50,
+      "Sp.Def": 65,
+      "Speed": 65
+    },
+    "img": "https://img.pokemondb.net/artwork/vulpix.jpg",
+    "primary": "Fire"
+  },
+  {
+    "name": "Geodude",
+    "id": "074",
+    "base": {
+      "Attack": 80,
+      "Defense": 100,
+      "HP": 40,
+      "Sp.Atk": 30,
+      "Sp.Def": 30,
+      "Speed": 20
+    },
+    "img": "https://img.pokemondb.net/artwork/geodude.jpg",
+    "primary": "Rock",
+    "secondary": "Ground"
+  },
+  {
+    "name": "Jynx",
+    "id": "124",
+    "base": {
+      "Attack": 50,
+      "Defense": 35,
+      "HP": 65,
+      "Sp.Atk": 115,
+      "Sp.Def": 95,
+      "Speed": 95
+    },
+    "img": "https://img.pokemondb.net/artwork/jynx.jpg",
+    "primary": "Ice",
+    "secondary": "Psychic"
+  },
+  {
+    "name": "Mankey",
+    "id": "056",
+    "base": {
+      "Attack": 80,
+      "Defense": 35,
+      "HP": 40,
+      "Sp.Atk": 35,
+      "Sp.Def": 45,
+      "Speed": 70
+    },
+    "img": "https://img.pokemondb.net/artwork/mankey.jpg",
+    "primary": "Fighting"
+  },
+  {
+    "name": "Gastly",
+    "id": "092",
+    "base": {
+      "Attack": 35,
+      "Defense": 30,
+      "HP": 30,
+      "Sp.Atk": 100,
+      "Sp.Def": 35,
+      "Speed": 80
+    },
+    "img": "https://img.pokemondb.net/artwork/gastly.jpg",
+    "primary": "Ghost",
+    "secondary": "Poison"
+  },
+  {
+    "name": "Dratini",
+    "id": "147",
+    "base": {
+      "Attack": 64,
+      "Defense": 45,
+      "HP": 41,
+      "Sp.Atk": 50,
+      "Sp.Def": 50,
+      "Speed": 50
+    },
+    "img": "https://img.pokemondb.net/artwork/dratini.jpg",
+    "primary": "Dragon"
+  },
+  {
+    "name": "Murkrow",
+    "id": "198",
+    "base": {
+      "Attack": 85,
+      "Defense": 42,
+      "HP": 60,
+      "Sp.Atk": 85,
+      "Sp.Def": 42,
+      "Speed": 91
+    },
+    "img": "https://img.pokemondb.net/artwork/murkrow.jpg",
+    "primary": "Dark",
+    "secondary": "Flying"
+  },
+  {
+    "name": "Magnemite",
+    "id": "081",
+    "base": {
+      "Attack": 35,
+      "Defense": 70,
+      "HP": 25,
+      "Sp.Atk": 95,
+      "Sp.Def": 55,
+      "Speed": 45
+    },
+    "img": "https://img.pokemondb.net/artwork/magnemite.jpg",
+    "primary": "Electric",
+    "secondary": "Steel"
+  }
+]
