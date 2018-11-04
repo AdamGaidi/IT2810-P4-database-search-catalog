@@ -6,29 +6,31 @@
 
 ## Getting started
 
+Running the backend of this project requires [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce) and [docker-compose](https://docs.docker.com/compose/install/), so go ahead and install those if you want to run the project locally.
+
 ### Setting up
 
 Clone the project and install dependencies as such:
 
 ```sh
 $ git clone git@gitlab.stud.idi.ntnu.no:it2810-h18/prosjekt3/gruppe01.git
+# or if not using ssh $ git clone https://gitlab.stud.idi.ntnu.no/it2810-h18/prosjekt3/gruppe01.git
 $ cd gruppe01
-$ yarn
+$ yarn # install the project dependencies
+$ docker-compose up -d # Sets up and hosts the database at http://localhost:4466/
 ```
 
-Or if you're not using ssh
-
-```sh
-$ git clone https://gitlab.stud.idi.ntnu.no/it2810-h18/prosjekt3/gruppe01.git
-$ cd gruppe01
-$ yarn
-```
+Then you can run project with `yarn server:dev` in one tab and `yarn start` in the other and go to [localhost:3000](http://localhost:3000) to view the app.
 
 ### Useful scripts
 
 In the project directory, you can run:
 
 #### `yarn start`
+
+> If you get an error mentioning that a module cannot be found, use the following command instead:
+> `NODE_PATH=src/ && yarn start`
+> This error happens because on some machines the configuration that gives us absolute imports is not being set correctly, and you need to manually set the config in your terminal. You usually only need to do this once.
 
 Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -40,7 +42,7 @@ Launches the test runner in the interactive watch mode. Runs all the `Jest` test
 
 #### `yarn server:dev`
 
-Run the GraphQL development server.
+Run the GraphQL development server. To see the interactive API (the playground), go to [http://localhost:4000/graphql](http://localhost:4000/graphql). There you can see the documentation for the API and interact with it.
 
 #### `yarn build`
 
@@ -49,6 +51,34 @@ Builds the app for production to the `build` folder. It correctly bundles React 
 #### `yarn cypress:open`
 
 Opens the cypress window where you can select a cypress tests to run.
+
+#### `graphql playground --port=3500`
+
+This command requires that you have `graphql-cli` installed globally on your computer, but allows you to see the playground
+of both the database API and our project api in the same window,
+which can be useful in development. The port flag is only used due to it running by default on port 3000, which clashes with the frontend, so this flag is only needed if running both.
+
+```sh
+$ npm install -g graphql-cli
+```
+
+#### `prisma deploy`
+
+If making changes to the database model in `database/datamodel.prisma`, you need to run this command afterwards. This requires that `prisma` is globally installed
+on your computer. After deploying the new model, it automatically
+updates the schema that is used by our server for database queries.
+
+```sh
+$ npm install -g prisma
+```
+
+#### `prisma reset`
+
+Reset/Empty the database. This requires that `prisma` is globally installed on your computer.
+
+```sh
+$ npm install -g prisma
+```
 
 ## What our site does
 

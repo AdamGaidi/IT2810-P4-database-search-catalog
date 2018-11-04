@@ -6,8 +6,9 @@ import PokemonItem from "components/PokemonItem";
 const GET_ALL_POKEMON = gql`
   query GetAllPokemon {
     allPokemon {
+      id
       name
-      src
+      img
       stars
       types
     }
@@ -20,10 +21,11 @@ const Pokemon = () => (
 
       if (error) return <p>Error :(</p>;
 
-      return data.allPokemon.map(({ name, types, stars, src }, i) => (
+      return data.allPokemon.map(({ name, types, stars, img, id }, i) => (
         <PokemonItem
-          key={name + i}
-          src={src}
+          id={id}
+          key={id}
+          src={img}
           stars={stars}
           hasStarred={false}
           name={name}
