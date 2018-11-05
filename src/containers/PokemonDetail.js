@@ -4,10 +4,10 @@ import gql from "graphql-tag";
 import PokemonDetailItem from "components/PokemonDetailItem";
 
 const GET_POKEMON = gql`
-  query GetPokemon($name: String) {
-    pokemon(name: $name) {
+  query GetPokemon($id: ID!) {
+    pokemon(id: $id) {
       name
-      src
+      img
       stars
       types
     }
@@ -15,19 +15,21 @@ const GET_POKEMON = gql`
 `;
 
 const PokemonDetail = () => (
-  <Query query={GET_POKEMON} variables={{ name: "bulbasaur" }}>
+  // The id is hardcoded to be bulbasaur for development
+  <Query query={GET_POKEMON} variables={{ id: "cjo34lejh000e0c19nrtl4jbe" }}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
 
       if (error) return <p>Error :(</p>;
 
+      const { img, stars, name, types } = data.pokemon;
       return (
         <PokemonDetailItem
-          src={data.pokemon.src}
-          stars={data.pokemon.stars}
-          hasStarred={data.pokemon.false}
-          name={data.pokemon.name}
-          types={data.pokemon.types}
+          src={img}
+          stars={stars}
+          hasStarred={false}
+          name={name}
+          types={types}
         />
       );
     }}
