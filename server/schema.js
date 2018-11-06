@@ -51,19 +51,34 @@ export const typeDefs = gql`
   type Pokemon {
     id: ID!
     name: String!
-    types: [Type!]!
-    img: String!
+    number: String!
     stars: Int!
+    attack: Int!
+    defense: Int!
+    HP: Int!
+    sp_atk: Int!
+    sp_def: Int!
+    speed: Int!
+    img: String!
+    types: [Type!]!
   }
 
   # The "Query" type is the root of all GraphQL queries.
   type Query {
     allPokemon(searchString: String): [Pokemon]!
-    pokemon(id: ID!): Pokemon
+    pokemon(name: String!): Pokemon
   }
 
   type Mutation {
-    createPokemon(name: String!, img: String!, types: [Type!]!): Pokemon!
+    createPokemon(
+      name: String!
+      number: String!
+      stars: Int!
+      attack: Int!
+      img: String!
+      types: [Type!]!
+    ): Pokemon!
+    deletePokemon(name: String): Pokemon
   }
 `;
 
@@ -79,12 +94,12 @@ export const resolvers = {
 
       return context.db.query.pokemons({ where }, info);
     },
-    // Gets a pokemon from db based on id.
+    // Gets a pokemon from db based on name.
     pokemon: (root, args, context, info) => {
       return context.db.query.pokemon(
         {
           where: {
-            id: args.id
+            name: args.name
           }
         },
         info
@@ -98,9 +113,26 @@ export const resolvers = {
         {
           data: {
             name: args.name,
+            number: args.number,
+            stars: args.stars,
+            attack: args.attack,
+            img: args.img,
             types: { set: args.types },
-            stars: 0,
-            img: args.img
+            defense: 0,
+            HP: 0,
+            sp_atk: 0,
+            sp_def: 0,
+            speed: 0
+          }
+        },
+        info
+      );
+    },
+    deletePokemon: (root, args, context, info) => {
+      return context.db.mutation.deletePokemon(
+        {
+          where: {
+            name: args.name
           }
         },
         info

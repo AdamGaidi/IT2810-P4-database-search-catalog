@@ -1,7 +1,14 @@
 type Pokemon {
   id: ID! @unique
   name: String! @unique
-  types: [String!]!
-  img: String!
+  number : String! @unique
   stars: Int!
+  attack: Int!
+  defense: Int!
+  HP: Int!
+  sp_atk: Int!
+  sp_def: Int!
+  speed: Int!
+  img: String!
+  types: [String!]!
 }

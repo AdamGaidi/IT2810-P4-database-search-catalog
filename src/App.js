@@ -27,7 +27,7 @@ class App extends Component {
           <main className="App__main-content">
             <SearchForm />
             <Pokemon />
-            <PokemonDetail />
+            {/* <PokemonDetail /> */}
             <LoadButton />
           </main>
         </div>

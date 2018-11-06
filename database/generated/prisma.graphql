@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Sun Nov 04 2018 17:58:09 GMT+0100 (CET)
+# timestamp: Tue Nov 06 2018 14:48:57 GMT+0100 (CET)
 
 type AggregatePokemon {
   count: Int!
@@ -21,7 +21,7 @@ type Mutation {
   updatePokemon(data: PokemonUpdateInput!, where: PokemonWhereUniqueInput!): Pokemon
   deletePokemon(where: PokemonWhereUniqueInput!): Pokemon
   upsertPokemon(where: PokemonWhereUniqueInput!, create: PokemonCreateInput!, update: PokemonUpdateInput!): Pokemon!
-  updateManyPokemons(data: PokemonUpdateInput!, where: PokemonWhereInput): BatchPayload!
+  updateManyPokemons(data: PokemonUpdateManyMutationInput!, where: PokemonWhereInput): BatchPayload!
   deleteManyPokemons(where: PokemonWhereInput): BatchPayload!
 }
 
@@ -55,9 +55,16 @@ type PageInfo {
 type Pokemon implements Node {
   id: ID!
   name: String!
-  types: [String!]!
-  img: String!
+  number: String!
   stars: Int!
+  attack: Int!
+  defense: Int!
+  HP: Int!
+  sp_atk: Int!
+  sp_def: Int!
+  speed: Int!
+  img: String!
+  types: [String!]!
 }
 
 """A connection to a list of items."""
@@ -72,8 +79,15 @@ type PokemonConnection {
 
 input PokemonCreateInput {
   name: String!
-  img: String!
+  number: String!
   stars: Int!
+  attack: Int!
+  defense: Int!
+  HP: Int!
+  sp_atk: Int!
+  sp_def: Int!
+  speed: Int!
+  img: String!
   types: PokemonCreatetypesInput
 }
 
@@ -95,10 +109,24 @@ enum PokemonOrderByInput {
   id_DESC
   name_ASC
   name_DESC
-  img_ASC
-  img_DESC
+  number_ASC
+  number_DESC
   stars_ASC
   stars_DESC
+  attack_ASC
+  attack_DESC
+  defense_ASC
+  defense_DESC
+  HP_ASC
+  HP_DESC
+  sp_atk_ASC
+  sp_atk_DESC
+  sp_def_ASC
+  sp_def_DESC
+  speed_ASC
+  speed_DESC
+  img_ASC
+  img_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -108,9 +136,16 @@ enum PokemonOrderByInput {
 type PokemonPreviousValues {
   id: ID!
   name: String!
-  types: [String!]!
-  img: String!
+  number: String!
   stars: Int!
+  attack: Int!
+  defense: Int!
+  HP: Int!
+  sp_atk: Int!
+  sp_def: Int!
+  speed: Int!
+  img: String!
+  types: [String!]!
 }
 
 type PokemonSubscriptionPayload {
@@ -154,8 +189,29 @@ input PokemonSubscriptionWhereInput {
 
 input PokemonUpdateInput {
   name: String
-  img: String
+  number: String
   stars: Int
+  attack: Int
+  defense: Int
+  HP: Int
+  sp_atk: Int
+  sp_def: Int
+  speed: Int
+  img: String
+  types: PokemonUpdatetypesInput
+}
+
+input PokemonUpdateManyMutationInput {
+  name: String
+  number: String
+  stars: Int
+  attack: Int
+  defense: Int
+  HP: Int
+  sp_atk: Int
+  sp_def: Int
+  speed: Int
+  img: String
   types: PokemonUpdatetypesInput
 }
 
@@ -252,6 +308,200 @@ input PokemonWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  number: String
+
+  """All values that are not equal to given value."""
+  number_not: String
+
+  """All values that are contained in given list."""
+  number_in: [String!]
+
+  """All values that are not contained in given list."""
+  number_not_in: [String!]
+
+  """All values less than the given value."""
+  number_lt: String
+
+  """All values less than or equal the given value."""
+  number_lte: String
+
+  """All values greater than the given value."""
+  number_gt: String
+
+  """All values greater than or equal the given value."""
+  number_gte: String
+
+  """All values containing the given string."""
+  number_contains: String
+
+  """All values not containing the given string."""
+  number_not_contains: String
+
+  """All values starting with the given string."""
+  number_starts_with: String
+
+  """All values not starting with the given string."""
+  number_not_starts_with: String
+
+  """All values ending with the given string."""
+  number_ends_with: String
+
+  """All values not ending with the given string."""
+  number_not_ends_with: String
+  stars: Int
+
+  """All values that are not equal to given value."""
+  stars_not: Int
+
+  """All values that are contained in given list."""
+  stars_in: [Int!]
+
+  """All values that are not contained in given list."""
+  stars_not_in: [Int!]
+
+  """All values less than the given value."""
+  stars_lt: Int
+
+  """All values less than or equal the given value."""
+  stars_lte: Int
+
+  """All values greater than the given value."""
+  stars_gt: Int
+
+  """All values greater than or equal the given value."""
+  stars_gte: Int
+  attack: Int
+
+  """All values that are not equal to given value."""
+  attack_not: Int
+
+  """All values that are contained in given list."""
+  attack_in: [Int!]
+
+  """All values that are not contained in given list."""
+  attack_not_in: [Int!]
+
+  """All values less than the given value."""
+  attack_lt: Int
+
+  """All values less than or equal the given value."""
+  attack_lte: Int
+
+  """All values greater than the given value."""
+  attack_gt: Int
+
+  """All values greater than or equal the given value."""
+  attack_gte: Int
+  defense: Int
+
+  """All values that are not equal to given value."""
+  defense_not: Int
+
+  """All values that are contained in given list."""
+  defense_in: [Int!]
+
+  """All values that are not contained in given list."""
+  defense_not_in: [Int!]
+
+  """All values less than the given value."""
+  defense_lt: Int
+
+  """All values less than or equal the given value."""
+  defense_lte: Int
+
+  """All values greater than the given value."""
+  defense_gt: Int
+
+  """All values greater than or equal the given value."""
+  defense_gte: Int
+  HP: Int
+
+  """All values that are not equal to given value."""
+  HP_not: Int
+
+  """All values that are contained in given list."""
+  HP_in: [Int!]
+
+  """All values that are not contained in given list."""
+  HP_not_in: [Int!]
+
+  """All values less than the given value."""
+  HP_lt: Int
+
+  """All values less than or equal the given value."""
+  HP_lte: Int
+
+  """All values greater than the given value."""
+  HP_gt: Int
+
+  """All values greater than or equal the given value."""
+  HP_gte: Int
+  sp_atk: Int
+
+  """All values that are not equal to given value."""
+  sp_atk_not: Int
+
+  """All values that are contained in given list."""
+  sp_atk_in: [Int!]
+
+  """All values that are not contained in given list."""
+  sp_atk_not_in: [Int!]
+
+  """All values less than the given value."""
+  sp_atk_lt: Int
+
+  """All values less than or equal the given value."""
+  sp_atk_lte: Int
+
+  """All values greater than the given value."""
+  sp_atk_gt: Int
+
+  """All values greater than or equal the given value."""
+  sp_atk_gte: Int
+  sp_def: Int
+
+  """All values that are not equal to given value."""
+  sp_def_not: Int
+
+  """All values that are contained in given list."""
+  sp_def_in: [Int!]
+
+  """All values that are not contained in given list."""
+  sp_def_not_in: [Int!]
+
+  """All values less than the given value."""
+  sp_def_lt: Int
+
+  """All values less than or equal the given value."""
+  sp_def_lte: Int
+
+  """All values greater than the given value."""
+  sp_def_gt: Int
+
+  """All values greater than or equal the given value."""
+  sp_def_gte: Int
+  speed: Int
+
+  """All values that are not equal to given value."""
+  speed_not: Int
+
+  """All values that are contained in given list."""
+  speed_in: [Int!]
+
+  """All values that are not contained in given list."""
+  speed_not_in: [Int!]
+
+  """All values less than the given value."""
+  speed_lt: Int
+
+  """All values less than or equal the given value."""
+  speed_lte: Int
+
+  """All values greater than the given value."""
+  speed_gt: Int
+
+  """All values greater than or equal the given value."""
+  speed_gte: Int
   img: String
 
   """All values that are not equal to given value."""
@@ -292,32 +542,12 @@ input PokemonWhereInput {
 
   """All values not ending with the given string."""
   img_not_ends_with: String
-  stars: Int
-
-  """All values that are not equal to given value."""
-  stars_not: Int
-
-  """All values that are contained in given list."""
-  stars_in: [Int!]
-
-  """All values that are not contained in given list."""
-  stars_not_in: [Int!]
-
-  """All values less than the given value."""
-  stars_lt: Int
-
-  """All values less than or equal the given value."""
-  stars_lte: Int
-
-  """All values greater than the given value."""
-  stars_gt: Int
-
-  """All values greater than or equal the given value."""
-  stars_gte: Int
 }
 
 input PokemonWhereUniqueInput {
   id: ID
+  name: String
+  number: String
 }
 
 type Query {
