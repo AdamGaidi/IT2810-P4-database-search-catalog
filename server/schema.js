@@ -1,31 +1,6 @@
 import { gql } from "apollo-server-express";
 import _, { find } from "lodash";
 
-// Mock data
-// const pokemon = [
-//   {
-//     id: 1,
-//     name: "Bulbasaur",
-//     types: ["grass", "poison"],
-//     img: "https://img.pokemondb.net/artwork/bulbasaur.jpg",
-//     stars: 4
-//   },
-//   {
-//     id: 2,
-//     name: "Charmander",
-//     types: ["fire"],
-//     img: "https://img.pokemondb.net/artwork/charmander.jpg",
-//     stars: 9
-//   },
-//   {
-//     id: 3,
-//     name: "Pikachu",
-//     types: ["electric"],
-//     img: "https://img.pokemondb.net/artwork/pikachu.jpg",
-//     stars: 11
-//   }
-// ];
-
 export const typeDefs = gql`
   enum Type {
     bug
@@ -51,19 +26,39 @@ export const typeDefs = gql`
   type Pokemon {
     id: ID!
     name: String!
-    types: [Type!]!
-    img: String!
+    number: String!
     stars: Int!
+    attack: Int!
+    defense: Int!
+    HP: Int!
+    sp_atk: Int!
+    sp_def: Int!
+    speed: Int!
+    img: String!
+    types: [Type!]!
   }
 
   # The "Query" type is the root of all GraphQL queries.
   type Query {
     allPokemon(searchString: String): [Pokemon]!
-    pokemon(id: ID!): Pokemon
+    pokemon(name: String!): Pokemon
   }
 
   type Mutation {
-    createPokemon(name: String!, img: String!, types: [Type!]!): Pokemon!
+    createPokemon(
+      name: String!
+      number: String!
+      stars: Int!
+      attack: Int!
+      defense: Int!
+      HP: Int!
+      sp_atk: Int!
+      sp_def: Int!
+      speed: Int!
+      img: String!
+      types: [Type!]!
+    ): Pokemon!
+    deletePokemon(name: String): Pokemon
   }
 `;
 
@@ -79,12 +74,12 @@ export const resolvers = {
 
       return context.db.query.pokemons({ where }, info);
     },
-    // Gets a pokemon from db based on id.
+    // Gets a pokemon from db based on name.
     pokemon: (root, args, context, info) => {
       return context.db.query.pokemon(
         {
           where: {
-            id: args.id
+            name: args.name
           }
         },
         info
@@ -98,9 +93,26 @@ export const resolvers = {
         {
           data: {
             name: args.name,
-            types: { set: args.types },
-            stars: 0,
-            img: args.img
+            number: args.number,
+            stars: args.stars,
+            attack: args.attack,
+            defense: args.defense,
+            HP: args.HP,
+            sp_atk: args.sp_atk,
+            sp_def: args.sp_def,
+            speed: args.speed,
+            img: args.img,
+            types: { set: args.types }
+          }
+        },
+        info
+      );
+    },
+    deletePokemon: (root, args, context, info) => {
+      return context.db.mutation.deletePokemon(
+        {
+          where: {
+            name: args.name
           }
         },
         info
