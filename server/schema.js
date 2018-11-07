@@ -1,31 +1,6 @@
 import { gql } from "apollo-server-express";
 import _, { find } from "lodash";
 
-// Mock data
-// const pokemon = [
-//   {
-//     id: 1,
-//     name: "Bulbasaur",
-//     types: ["grass", "poison"],
-//     img: "https://img.pokemondb.net/artwork/bulbasaur.jpg",
-//     stars: 4
-//   },
-//   {
-//     id: 2,
-//     name: "Charmander",
-//     types: ["fire"],
-//     img: "https://img.pokemondb.net/artwork/charmander.jpg",
-//     stars: 9
-//   },
-//   {
-//     id: 3,
-//     name: "Pikachu",
-//     types: ["electric"],
-//     img: "https://img.pokemondb.net/artwork/pikachu.jpg",
-//     stars: 11
-//   }
-// ];
-
 export const typeDefs = gql`
   enum Type {
     bug
@@ -75,6 +50,11 @@ export const typeDefs = gql`
       number: String!
       stars: Int!
       attack: Int!
+      defense: Int!
+      HP: Int!
+      sp_atk: Int!
+      sp_def: Int!
+      speed: Int!
       img: String!
       types: [Type!]!
     ): Pokemon!
@@ -116,13 +96,13 @@ export const resolvers = {
             number: args.number,
             stars: args.stars,
             attack: args.attack,
+            defense: args.defense,
+            HP: args.HP,
+            sp_atk: args.sp_atk,
+            sp_def: args.sp_def,
+            speed: args.speed,
             img: args.img,
-            types: { set: args.types },
-            defense: 0,
-            HP: 0,
-            sp_atk: 0,
-            sp_def: 0,
-            speed: 0
+            types: { set: args.types }
           }
         },
         info

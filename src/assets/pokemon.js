@@ -313,4 +313,4 @@ var pokemon = [
   }
 ];
 
-export default pokemon;
+module.exports = pokemon;
