@@ -17,7 +17,8 @@ $ git clone git@gitlab.stud.idi.ntnu.no:it2810-h18/prosjekt3/gruppe01.git
 # or if not using ssh $ git clone https://gitlab.stud.idi.ntnu.no/it2810-h18/prosjekt3/gruppe01.git
 $ cd gruppe01
 $ yarn # install the project dependencies
-$ docker-compose up -d # Sets up and hosts the database at http://localhost:4466/
+$ cd database && docker-compose up -d # Sets up and hosts the database at http://localhost:4466/
+$ node populate_database.js # Populates the database
 ```
 
 Then you can run project with `yarn server:dev` in one tab and `yarn start` in the other and go to [localhost:3000](http://localhost:3000) to view the app.
