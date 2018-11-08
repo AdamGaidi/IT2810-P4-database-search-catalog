@@ -18,6 +18,7 @@ $ git clone git@gitlab.stud.idi.ntnu.no:it2810-h18/prosjekt3/gruppe01.git
 $ cd gruppe01
 $ yarn # install the project dependencies
 $ cd database && docker-compose up -d # Sets up and hosts the database at http://localhost:4466/
+$ yarn server:dev # You need to run the backend to be able to populate the database with our script
 $ node populate_database.js # Populates the database
 ```
 
