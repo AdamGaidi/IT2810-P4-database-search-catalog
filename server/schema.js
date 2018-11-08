@@ -59,6 +59,8 @@ export const typeDefs = gql`
       types: [Type!]!
     ): Pokemon!
     deletePokemon(name: String): Pokemon
+    starPokemon(name: String, stars: Int): Pokemon
+    unStarPokemon(name: String, stars: Int): Pokemon
   }
 `;
 
@@ -111,6 +113,32 @@ export const resolvers = {
     deletePokemon: (root, args, context, info) => {
       return context.db.mutation.deletePokemon(
         {
+          where: {
+            name: args.name
+          }
+        },
+        info
+      );
+    },
+    starPokemon: (root, args, context, info) => {
+      return context.db.mutation.updatePokemon(
+        {
+          data: {
+            stars: args.stars + 1
+          },
+          where: {
+            name: args.name
+          }
+        },
+        info
+      );
+    },
+    unStarPokemon: (root, args, context, info) => {
+      return context.db.mutation.updatePokemon(
+        {
+          data: {
+            stars: args.stars - 1
+          },
           where: {
             name: args.name
           }

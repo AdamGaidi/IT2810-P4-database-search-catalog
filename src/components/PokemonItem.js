@@ -4,6 +4,7 @@ import FontAwesome from "components/FontAwesome";
 import "./PokemonItem.css";
 import Pill from "components/Pill";
 import pokemonTypes from "pokemonTypes";
+import StarButton from "components/StarButton";
 
 const PokemonItem = ({ src, stars, hasStarred, name, types }) => {
   return (
@@ -13,11 +14,7 @@ const PokemonItem = ({ src, stars, hasStarred, name, types }) => {
       <span className="PokemonItem__name">{name}</span>
 
       <div className="PokemonItem__stars">
-        <FontAwesome
-          icon="star"
-          stylePrefix="far"
-          className="PokemonItem__star-icon"
-        />
+        <StarButton isStarred={hasStarred} name={name} stars={stars} />
         {stars}
       </div>
 
