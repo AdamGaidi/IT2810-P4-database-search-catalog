@@ -1,6 +1,8 @@
 import { gql } from "apollo-server-express";
 import _, { find } from "lodash";
 
+
+
 export const typeDefs = gql`
   enum Type {
     bug
@@ -22,6 +24,35 @@ export const typeDefs = gql`
     steel
     water
   }
+  
+  enum PokemonOrderByInput {
+    id_ASC
+    id_DESC
+    name_ASC
+    name_DESC
+    number_ASC
+    number_DESC
+    stars_ASC
+    stars_DESC
+    attack_ASC
+    attack_DESC
+    defense_ASC
+    defense_DESC
+    HP_ASC
+    HP_DESC
+    sp_atk_ASC
+    sp_atk_DESC
+    sp_def_ASC
+    sp_def_DESC
+    speed_ASC
+    speed_DESC
+    img_ASC
+    img_DESC
+    updatedAt_ASC
+    updatedAt_DESC
+    createdAt_ASC
+    createdAt_DESC
+  }
 
   type Pokemon {
     id: ID!
@@ -40,7 +71,7 @@ export const typeDefs = gql`
 
   # The "Query" type is the root of all GraphQL queries.
   type Query {
-    allPokemon(searchString: String): [Pokemon]!
+    allPokemon(searchString: String, orderBy: PokemonOrderByInput): [Pokemon]!
     pokemon(name: String!): Pokemon
   }
 
@@ -72,7 +103,7 @@ export const resolvers = {
           }
         : {};
 
-      return context.db.query.pokemons({ where }, info);
+      return context.db.query.pokemons({ where, orderBy: args.orderBy }, info);
     },
     // Gets a pokemon from db based on name.
     pokemon: (root, args, context, info) => {
