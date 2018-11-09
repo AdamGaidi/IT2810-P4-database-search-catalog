@@ -10,8 +10,13 @@ const GET_ALL_POKEMON = gql`
   query GetAllPokemon(
     $sortMethod: PokemonOrderByInput
     $selectedFilters: [Type!]
+    $searchString: String
   ) {
-    allPokemon(orderBy: $sortMethod, filterByType: $selectedFilters) {
+    allPokemon(
+      orderBy: $sortMethod
+      filterByType: $selectedFilters
+      searchString: $searchString
+    ) {
       id
       name
       img
@@ -21,7 +26,7 @@ const GET_ALL_POKEMON = gql`
   }
 `;
 
-const Pokemon = ({ sortMethod, selectedFilters }) => {
+const Pokemon = ({ sortMethod, selectedFilters, searchString }) => {
   const sortingMethods = {
     alphabetical: "name_ASC",
     reversealphabetical: "name_DESC",
@@ -41,7 +46,8 @@ const Pokemon = ({ sortMethod, selectedFilters }) => {
       query={GET_ALL_POKEMON}
       variables={{
         sortMethod: sortingMethods[sortMethod],
-        selectedFilters: filterTypes
+        selectedFilters: filterTypes,
+        searchString: searchString
       }}
     >
       {({ loading, error, data }) => {
@@ -69,7 +75,8 @@ const Pokemon = ({ sortMethod, selectedFilters }) => {
 const mapStateToProps = state => {
   return {
     sortMethod: state.form.searchForm.values.sort,
-    selectedFilters: state.form.searchForm.values
+    selectedFilters: state.form.searchForm.values,
+    searchString: state.form.searchForm.values.search
   };
 };
 
