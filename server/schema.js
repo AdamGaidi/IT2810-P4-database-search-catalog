@@ -71,7 +71,7 @@ export const typeDefs = gql`
 
   # The "Query" type is the root of all GraphQL queries.
   type Query {
-    allPokemon(searchString: String, orderBy: PokemonOrderByInput): [Pokemon]!
+    allPokemon(searchString: String, orderBy: PokemonOrderByInput, filterByType: [Type!]): [Pokemon]!
     pokemon(name: String!): Pokemon
   }
 
@@ -96,14 +96,14 @@ export const typeDefs = gql`
 // Resolvers define the technique for fetching the types in the schema.
 export const resolvers = {
   Query: {
-    allPokemon: (root, args, context, info) => {
+    allPokemon: async (root, args, context, info) => {
       const where = args.searchString
         ? {
             name_contains: args.searchString
           }
         : {};
-
-      return context.db.query.pokemons({ where, orderBy: args.orderBy }, info);
+      const data = await context.db.query.pokemons({ where, orderBy: args.orderBy }, info);
+      return filterPokemonType(data, args.filterByType);
     },
     // Gets a pokemon from db based on name.
     pokemon: (root, args, context, info) => {
@@ -151,3 +151,20 @@ export const resolvers = {
     }
   }
 };
+
+function filterPokemonType(pokemonCollection, selectedFilters){
+  //If length === 0 all types are selected
+  if (Object.keys(selectedFilters).length === 0){
+    return pokemonCollection;
+  }
+
+  const modifiedPokemonCollection = pokemonCollection.filter(pokemon => {
+    for (let i = 0; i <= selectedFilters.length; i++){
+      if (pokemon.types.includes(selectedFilters[i])){
+        return true;
+      }
+    }
+  });
+
+  return modifiedPokemonCollection;
+}
