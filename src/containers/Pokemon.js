@@ -7,8 +7,11 @@ import { exampleAction } from "../actions/exampleAction";
 import connect from "react-redux/es/connect/connect";
 
 const GET_ALL_POKEMON = gql`
-  query GetAllPokemon($sortMethod: PokemonOrderByInput) {
-    allPokemon(orderBy: $sortMethod) {
+  query GetAllPokemon(
+    $sortMethod: PokemonOrderByInput
+    $selectedFilters: [Type!]
+  ) {
+    allPokemon(orderBy: $sortMethod, filterByType: $selectedFilters) {
       id
       name
       img
@@ -18,17 +21,28 @@ const GET_ALL_POKEMON = gql`
   }
 `;
 
-const Pokemon = ({ sortMethod }) => {
+const Pokemon = ({ sortMethod, selectedFilters }) => {
   const sortingMethods = {
     alphabetical: "name_ASC",
     reversealphabetical: "name_DESC",
     popularity: "stars_ASC"
   };
 
+  var filterTypes = Object.keys(selectedFilters).filter(function(key) {
+    if (key !== "sort" && key !== "search" && selectedFilters[key] === true) {
+      return key;
+    }
+  });
+
+  console.log(filterTypes);
+  console.log(Object.keys(filterTypes).length);
   return (
     <Query
       query={GET_ALL_POKEMON}
-      variables={{ sortMethod: sortingMethods[sortMethod] }}
+      variables={{
+        sortMethod: sortingMethods[sortMethod],
+        selectedFilters: filterTypes
+      }}
     >
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>;
@@ -54,7 +68,8 @@ const Pokemon = ({ sortMethod }) => {
 //--Redux--//
 const mapStateToProps = state => {
   return {
-    sortMethod: state.form.searchForm.values.sort
+    sortMethod: state.form.searchForm.values.sort,
+    selectedFilters: state.form.searchForm.values
   };
 };
 
