@@ -2,8 +2,8 @@
 //  Action types
 //
 
-// In redux you use those these constants at least in two places - in your
-// reducers and during actions creation. So it's much convenient to
+// In redux you use these constants at least in two places - in your
+// reducers and during actions creation. So it's much more convenient to
 // define a constant once in some file e.g. actionTypes.js
 // It allows you to easily find all usages of that constant across
 // the project (if you use an IDE). It also prevents you from
@@ -19,3 +19,5 @@ export const DECREMENT = "DECREMENT";
 export const ADD_POKEMON = "ADD_POKEMON";
 export const EXAMPLE_YAY = "EXAMPLE_YAY";
 export const EXAMPLE_TWO = "EXAMPLE_TWO";
+
+export const TOGGLE_DETAILS = "TOGGLE_DETAILS";
