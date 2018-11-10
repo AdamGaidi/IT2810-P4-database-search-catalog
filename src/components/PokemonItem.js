@@ -5,7 +5,18 @@ import "./PokemonItem.css";
 import Pill from "components/Pill";
 import pokemonTypes from "pokemonTypes";
 
-const PokemonItem = ({ src, stars, hasStarred, name, types }) => {
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { toggleDetailsAction } from "actions/pokemonDetailActions";
+
+const PokemonItem = ({
+  src,
+  stars,
+  hasStarred,
+  name,
+  types,
+  toggleDetailsAction
+}) => {
   return (
     <Card className="PokemonItem">
       <img src={src} alt={name} className="PokemonItem__img" />
@@ -29,7 +40,7 @@ const PokemonItem = ({ src, stars, hasStarred, name, types }) => {
       </div>
 
       <button
-        onClick={() => console.log(name, " was clicked")}
+        onClick={() => toggleDetailsAction(name)}
         className="PokemonItem__show-more"
       >
         Click to see more
@@ -42,4 +53,21 @@ const PokemonItem = ({ src, stars, hasStarred, name, types }) => {
   );
 };
 
-export default PokemonItem;
+//export default PokemonItem;
+
+//--Redux--//
+const mapStateToProps = state => {
+  return {
+    examplePropOne: state.test2.examplePropOne
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ toggleDetailsAction }, dispatch);
+};
+
+// export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PokemonItem);
