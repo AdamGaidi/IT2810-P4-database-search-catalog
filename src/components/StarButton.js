@@ -49,7 +49,7 @@ class StarButton extends Component {
 const STAR_POKEMON = gql`
   mutation StarPokemon($name: String!, $stars: Int!) {
     starPokemon(name: $name, stars: $stars) {
-      name
+      id
       stars
     }
   }
@@ -58,7 +58,7 @@ const STAR_POKEMON = gql`
 const UNSTAR_POKEMON = gql`
   mutation UnStarPokemon($name: String!, $stars: Int!) {
     unStarPokemon(name: $name, stars: $stars) {
-      name
+      id
       stars
     }
   }
