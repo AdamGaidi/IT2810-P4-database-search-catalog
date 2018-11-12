@@ -6,7 +6,24 @@ import Stat from "components/Stat";
 import pokemonTypes from "pokemonTypes";
 import "./PokemonDetailItem.css";
 
-const PokemonDetailItem = ({ src, stars, hasStarred, name, types, stats }) => {
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { toggleDetailsAction } from "actions/pokemonDetailActions";
+
+const PokemonDetailItem = ({
+  toggleDetailsAction,
+  src,
+  stars,
+  hasStarred,
+  name,
+  types,
+  attack,
+  defense,
+  HP,
+  sp_atk,
+  sp_def,
+  speed
+}) => {
   return (
     <Card className="PokemonDetailItem">
       <div className="PokemonDetailItem__info">
@@ -27,12 +44,12 @@ const PokemonDetailItem = ({ src, stars, hasStarred, name, types, stats }) => {
 
           <div className="PokemonDetailItem__stats">
             <span className="PokemonDetailItem__stats-title">Base stats</span>
-            <Stat label="HP" number="35" />
-            <Stat label="Attack" number="35" />
-            <Stat label="Defense" number="35" />
-            <Stat label="Sp. Atk" number="35" />
-            <Stat label="Sp. Def" number="35" />
-            <Stat label="Speed" number="35" />
+            <Stat label="HP" number={HP} />
+            <Stat label="Attack" number={attack} />
+            <Stat label="Defense" number={defense} />
+            <Stat label="Sp. Atk" number={sp_atk} />
+            <Stat label="Sp. Def" number={sp_def} />
+            <Stat label="Speed" number={speed} />
           </div>
         </div>
       </div>
@@ -47,7 +64,7 @@ const PokemonDetailItem = ({ src, stars, hasStarred, name, types, stats }) => {
       </div>
 
       <button
-        onClick={() => console.log(name, " less was clicked")}
+        onClick={() => toggleDetailsAction(name)}
         className="PokemonDetailItem__show-more"
       >
         Click to see less
@@ -56,4 +73,21 @@ const PokemonDetailItem = ({ src, stars, hasStarred, name, types, stats }) => {
   );
 };
 
-export default PokemonDetailItem;
+//export default PokemonDetailItem;
+
+//--Redux--//
+const mapStateToProps = state => {
+  return {
+    examplePropOne: state.test2.examplePropOne
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ toggleDetailsAction }, dispatch);
+};
+
+// export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PokemonDetailItem);
