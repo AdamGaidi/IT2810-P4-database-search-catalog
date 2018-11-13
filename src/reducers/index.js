@@ -5,12 +5,10 @@ import pokemon from "./pokemon";
 import test from "./test";
 import test2 from "./test2";
 import togglePokemonDetails from "./togglePokemonDetails";
-import setFetchAmount from "./setFetchAmount";
 
 // All reducers need to be imported and put in here
 export default combineReducers({
   togglePokemonDetails,
-  setFetchAmount,
   pokemon,
   test,
   test2,

@@ -21,4 +21,3 @@ export const EXAMPLE_YAY = "EXAMPLE_YAY";
 export const EXAMPLE_TWO = "EXAMPLE_TWO";
 
 export const TOGGLE_DETAILS = "TOGGLE_DETAILS";
-export const SET_FETCH_AMOUNT = "SET_FETCH_AMOUNT";

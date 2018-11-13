@@ -3,7 +3,6 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PokemonItem from "components/PokemonItem";
 import { bindActionCreators } from "redux";
-import { exampleAction } from "../actions/exampleAction";
 import connect from "react-redux/es/connect/connect";
 import PokemonDetailItem from "components/PokemonDetailItem";
 import LoadButton from "components/LoadButton";
@@ -49,8 +48,7 @@ const Pokemon = ({
   sortMethod,
   selectedFilters,
   searchString,
-  showDetails,
-  fetchAmount
+  showDetails
 }) => {
   const sortingMethods = {
     alphabetical: "name_ASC",
@@ -170,8 +168,7 @@ const mapStateToProps = state => {
     sortMethod: state.form.searchForm.values.sort,
     selectedFilters: state.form.searchForm.values,
     searchString: state.form.searchForm.values.search,
-    showDetails: state.togglePokemonDetails,
-    fetchAmount: state.setFetchAmount
+    showDetails: state.togglePokemonDetails
   };
 };
 
