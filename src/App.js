@@ -26,8 +26,6 @@ class App extends Component {
           <main className="App__main-content">
             <SearchForm />
             <Pokemon />
-            {/* <PokemonDetail /> */}
-            <LoadButton />
           </main>
         </div>
         <footer className="App__footer">

@@ -73,6 +73,7 @@ export const typeDefs = gql`
       searchString: String
       orderBy: PokemonOrderByInput
       filterByType: [Type!]
+      skip: Int
       first: Int
     ): [Pokemon]!
     pokemon(name: String!): Pokemon
@@ -106,7 +107,7 @@ export const resolvers = {
           }
         : {};
       const data = await context.db.query.pokemons(
-        { where, orderBy: args.orderBy, first: args.first },
+        { where, orderBy: args.orderBy, skip: args.skip, first: args.first },
         info
       );
       return filterPokemonType(data, args.filterByType);
@@ -159,8 +160,8 @@ export const resolvers = {
 };
 
 function filterPokemonType(pokemonCollection, selectedFilters) {
-  //If length === 0 all types are selected
-  if (Object.keys(selectedFilters).length === 0) {
+  //If length === 0 or undefined all types are selected
+  if (selectedFilters == null || Object.keys(selectedFilters).length === 0) {
     return pokemonCollection;
   }
 
