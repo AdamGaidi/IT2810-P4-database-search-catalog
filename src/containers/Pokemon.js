@@ -12,11 +12,13 @@ const GET_ALL_POKEMON = gql`
     $sortMethod: PokemonOrderByInput
     $selectedFilters: [Type!]
     $searchString: String
+    $fetchAmount: Int
   ) {
     allPokemon(
       orderBy: $sortMethod
       filterByType: $selectedFilters
       searchString: $searchString
+      first: $fetchAmount
     ) {
       id
       name
@@ -64,7 +66,8 @@ const Pokemon = ({
       variables={{
         sortMethod: sortingMethods[sortMethod],
         selectedFilters: filterTypes,
-        searchString: searchString
+        searchString: searchString,
+        fetchAmount: 1
       }}
     >
       {({ loading, error, data }) => {
