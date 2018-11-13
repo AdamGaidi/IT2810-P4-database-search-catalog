@@ -46,7 +46,8 @@ const Pokemon = ({
   sortMethod,
   selectedFilters,
   searchString,
-  showDetails
+  showDetails,
+  fetchAmount
 }) => {
   const sortingMethods = {
     alphabetical: "name_ASC",
@@ -67,7 +68,7 @@ const Pokemon = ({
         sortMethod: sortingMethods[sortMethod],
         selectedFilters: filterTypes,
         searchString: searchString,
-        fetchAmount: 1
+        fetchAmount: fetchAmount
       }}
     >
       {({ loading, error, data }) => {
@@ -142,7 +143,8 @@ const mapStateToProps = state => {
     sortMethod: state.form.searchForm.values.sort,
     selectedFilters: state.form.searchForm.values,
     searchString: state.form.searchForm.values.search,
-    showDetails: state.togglePokemonDetails
+    showDetails: state.togglePokemonDetails,
+    fetchAmount: state.setFetchAmount
   };
 };
 

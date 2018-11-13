@@ -73,21 +73,13 @@ const PokemonDetailItem = ({
   );
 };
 
-//export default PokemonDetailItem;
-
 //--Redux--//
-const mapStateToProps = state => {
-  return {
-    examplePropOne: state.test2.examplePropOne
-  };
-};
-
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ toggleDetailsAction }, dispatch);
 };
 
 // export default App;
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(PokemonDetailItem);
