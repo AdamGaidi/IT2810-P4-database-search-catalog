@@ -14,7 +14,7 @@ class StarButton extends Component {
       ? this.props.UNSTAR_POKEMON
       : this.props.STAR_POKEMON;
     action({
-      variables: { name: this.props.name, stars: this.props.stars }
+      variables: { name: this.props.name }
     })
       .then(({ data }) => {
         console.log("got data", data);
@@ -47,8 +47,8 @@ class StarButton extends Component {
 }
 
 const STAR_POKEMON = gql`
-  mutation StarPokemon($name: String!, $stars: Int!) {
-    starPokemon(name: $name, stars: $stars) {
+  mutation StarPokemon($name: String!) {
+    starPokemon(name: $name) {
       id
       stars
     }
@@ -56,8 +56,8 @@ const STAR_POKEMON = gql`
 `;
 
 const UNSTAR_POKEMON = gql`
-  mutation UnStarPokemon($name: String!, $stars: Int!) {
-    unStarPokemon(name: $name, stars: $stars) {
+  mutation UnStarPokemon($name: String!) {
+    unStarPokemon(name: $name) {
       id
       stars
     }

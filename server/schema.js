@@ -1,8 +1,6 @@
 import { gql } from "apollo-server-express";
 import _, { find } from "lodash";
 
-
-
 export const typeDefs = gql`
   enum Type {
     bug
@@ -24,7 +22,7 @@ export const typeDefs = gql`
     steel
     water
   }
-  
+
   enum PokemonOrderByInput {
     id_ASC
     id_DESC
@@ -71,7 +69,11 @@ export const typeDefs = gql`
 
   # The "Query" type is the root of all GraphQL queries.
   type Query {
-    allPokemon(searchString: String, orderBy: PokemonOrderByInput, filterByType: [Type!]): [Pokemon]!
+    allPokemon(
+      searchString: String
+      orderBy: PokemonOrderByInput
+      filterByType: [Type!]
+    ): [Pokemon]!
     pokemon(name: String!): Pokemon
   }
 
@@ -90,8 +92,8 @@ export const typeDefs = gql`
       types: [Type!]!
     ): Pokemon!
     deletePokemon(name: String): Pokemon
-    starPokemon(name: String, stars: Int): Pokemon
-    unStarPokemon(name: String, stars: Int): Pokemon
+    starPokemon(name: String): Pokemon
+    unStarPokemon(name: String): Pokemon
   }
 `;
 
@@ -104,7 +106,10 @@ export const resolvers = {
             name_contains: args.searchString
           }
         : {};
-      const data = await context.db.query.pokemons({ where, orderBy: args.orderBy }, info);
+      const data = await context.db.query.pokemons(
+        { where, orderBy: args.orderBy },
+        info
+      );
       return filterPokemonType(data, args.filterByType);
     },
     // Gets a pokemon from db based on name.
@@ -151,11 +156,17 @@ export const resolvers = {
         info
       );
     },
-    starPokemon: (root, args, context, info) => {
+    starPokemon: async (root, args, context, info) => {
+      const data = await context.db.query.pokemon({
+        where: {
+          name: args.name
+        },
+        info
+      });
       return context.db.mutation.updatePokemon(
         {
           data: {
-            stars: args.stars + 1
+            stars: data.stars + 1
           },
           where: {
             name: args.name
@@ -164,11 +175,17 @@ export const resolvers = {
         info
       );
     },
-    unStarPokemon: (root, args, context, info) => {
+    unStarPokemon: async (root, args, context, info) => {
+      const data = await context.db.query.pokemon({
+        where: {
+          name: args.name
+        },
+        info
+      });
       return context.db.mutation.updatePokemon(
         {
           data: {
-            stars: args.stars - 1
+            stars: data.stars - 1
           },
           where: {
             name: args.name
@@ -180,15 +197,15 @@ export const resolvers = {
   }
 };
 
-function filterPokemonType(pokemonCollection, selectedFilters){
+function filterPokemonType(pokemonCollection, selectedFilters) {
   //If length === 0 all types are selected
-  if (Object.keys(selectedFilters).length === 0){
+  if (Object.keys(selectedFilters).length === 0) {
     return pokemonCollection;
   }
 
   const modifiedPokemonCollection = pokemonCollection.filter(pokemon => {
-    for (let i = 0; i <= selectedFilters.length; i++){
-      if (pokemon.types.includes(selectedFilters[i])){
+    for (let i = 0; i <= selectedFilters.length; i++) {
+      if (pokemon.types.includes(selectedFilters[i])) {
         return true;
       }
     }

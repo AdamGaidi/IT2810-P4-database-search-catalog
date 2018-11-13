@@ -56,7 +56,7 @@ const PokemonDetailItem = ({
       </div>
 
       <div className="PokemonDetailItem__stars">
-        <StarButton isStarred={hasStarred} name={name} stars={stars} />
+        <StarButton isStarred={hasStarred} name={name} />
         {stars}
       </div>
 

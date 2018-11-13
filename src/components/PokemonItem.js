@@ -25,7 +25,7 @@ const PokemonItem = ({
       <span className="PokemonItem__name">{name}</span>
 
       <div className="PokemonItem__stars">
-        <StarButton isStarred={hasStarred} name={name} stars={stars} />
+        <StarButton isStarred={hasStarred} name={name} />
         {stars}
       </div>
 
