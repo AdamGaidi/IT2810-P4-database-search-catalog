@@ -49,7 +49,7 @@ const Pokemon = ({
   const sortingMethods = {
     alphabetical: "name_ASC",
     reversealphabetical: "name_DESC",
-    popularity: "stars_ASC"
+    popularity: "stars_DESC"
   };
 
   var filterTypes = Object.keys(selectedFilters).filter(function(key) {
