@@ -5,10 +5,12 @@ import pokemon from "./pokemon";
 import test from "./test";
 import test2 from "./test2";
 import togglePokemonDetails from "./togglePokemonDetails";
+import toggleStarPokemon from "./toggleStarPokemon";
 
 // All reducers need to be imported and put in here
 export default combineReducers({
   togglePokemonDetails,
+  toggleStarPokemon,
   pokemon,
   test,
   test2,

@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "components/Card";
-import FontAwesome from "components/FontAwesome";
 import Pill from "components/Pill";
 import Stat from "components/Stat";
 import pokemonTypes from "pokemonTypes";
@@ -56,7 +55,7 @@ const PokemonDetailItem = ({
       </div>
 
       <div className="PokemonDetailItem__stars">
-        <StarButton isStarred={hasStarred} name={name} />
+        <StarButton name={name} />
         {stars}
       </div>
 

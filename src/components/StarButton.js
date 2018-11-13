@@ -1,50 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import "./PokemonItem.css";
 import FontAwesome from "components/FontAwesome";
 import gql from "graphql-tag";
-import { graphql } from "react-apollo";
-
-class StarButton extends Component {
-  state = {
-    isStarred: this.props.isStarred
-  };
-
-  handleClick() {
-    var action = this.state.isStarred
-      ? this.props.UNSTAR_POKEMON
-      : this.props.STAR_POKEMON;
-    action({
-      variables: { name: this.props.name }
-    })
-      .then(({ data }) => {
-        console.log("got data", data);
-      })
-      .catch(error => {
-        console.log("there was an error sending the query", error);
-      });
-    this.setState(prevState => ({
-      isStarred: !prevState.isStarred
-    }));
-  }
-
-  render() {
-    return (
-      <div>
-        <button
-          className="PokemonItem__star-button"
-          onClick={() => this.handleClick()}
-          padding={"0px"}
-        >
-          <FontAwesome
-            icon="star"
-            stylePrefix={this.state.isStarred ? "fas" : "far"}
-            className="PokemonItem__star-icon"
-          />
-        </button>
-      </div>
-    );
-  }
-}
+import { Mutation } from "react-apollo";
+import { connect } from "react-redux";
+import { toggleStarAction } from "actions/starPokemonActions";
+import { bindActionCreators } from "redux";
 
 const STAR_POKEMON = gql`
   mutation StarPokemon($name: String!) {
@@ -64,6 +25,45 @@ const UNSTAR_POKEMON = gql`
   }
 `;
 
-export default graphql(STAR_POKEMON, { name: "STAR_POKEMON" })(
-  graphql(UNSTAR_POKEMON, { name: "UNSTAR_POKEMON" })(StarButton)
-);
+const StarButton = ({ isStarred, name, toggleStarAction }) => {
+  const starred = isStarred[name] ? isStarred[name] : false;
+  const action = starred ? UNSTAR_POKEMON : STAR_POKEMON;
+
+  return (
+    <Mutation mutation={action}>
+      {(updatePokemon, { data }) => (
+        <div>
+          <button
+            className="PokemonItem__star-button"
+            onClick={() => {
+              updatePokemon({ variables: { name: name } });
+              toggleStarAction(name);
+            }}
+            padding={"0px"}
+          >
+            <FontAwesome
+              icon="star"
+              stylePrefix={starred ? "fas" : "far"}
+              className="PokemonItem__star-icon"
+            />
+          </button>
+        </div>
+      )}
+    </Mutation>
+  );
+};
+
+const mapStateToProps = state => {
+  return {
+    isStarred: state.toggleStarPokemon
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ toggleStarAction }, dispatch);
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StarButton);
