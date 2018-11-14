@@ -3,7 +3,7 @@ import Card from "components/Card";
 import FontAwesome from "components/FontAwesome";
 import "./PokemonItem.css";
 import Pill from "components/Pill";
-import pokemonTypes from "pokemonTypes";
+import pokemonTypes from "constants/pokemonTypes";
 import StarButton from "components/StarButton";
 
 import { bindActionCreators } from "redux";

@@ -2,7 +2,7 @@ import React from "react";
 import Card from "components/Card";
 import Pill from "components/Pill";
 import Stat from "components/Stat";
-import pokemonTypes from "pokemonTypes";
+import pokemonTypes from "constants/pokemonTypes";
 import "./PokemonDetailItem.css";
 import StarButton from "components/StarButton";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import FontAwesome from "components/FontAwesome";
-import pokemonTypes from "pokemonTypes";
+import pokemonTypes from "constants/pokemonTypes";
 import Checkbox from "components/Checkbox";
 import Radiobutton from "components/Radiobutton";
 import Card from "components/Card";
@@ -25,6 +25,7 @@ const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {
               component="input"
               type="text"
               placeholder="charmander"
+              autoFocus
             />
           </div>
 
