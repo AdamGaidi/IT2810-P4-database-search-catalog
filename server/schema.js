@@ -107,10 +107,14 @@ export const resolvers = {
           }
         : {};
       const data = await context.db.query.pokemons(
-        { where, orderBy: args.orderBy, skip: args.skip, first: args.first },
+        { where, orderBy: args.orderBy },
         info
       );
-      return filterPokemonType(data, args.filterByType);
+      return pagination(
+        filterPokemonType(data, args.filterByType),
+        args.skip,
+        args.first
+      );
     },
     // Gets a pokemon from db based on name.
     pokemon: (root, args, context, info) => {
@@ -174,4 +178,22 @@ function filterPokemonType(pokemonCollection, selectedFilters) {
   });
 
   return modifiedPokemonCollection;
+}
+
+function pagination(pokemonCollection, offset, limit) {
+  if (pokemonCollection == null) {
+    return pokemonCollection;
+  } else if (pokemonCollection.length <= offset) {
+    const paginatedPokemonCollection = pokemonCollection.filter(() => {
+      for (let i = 0; i <= limit; i++) {
+        if (pokemonCollection[i]) {
+          return true;
+        }
+      }
+    });
+
+    return paginatedPokemonCollection;
+  }
+
+  return null;
 }
