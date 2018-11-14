@@ -166,7 +166,10 @@ Lorem ipsum ...
 
 ### Cypress
 
-Open Cypress with `npm run cypress:open`
+Open Cypress with 
+```sh
+npm run cypress:open
+```
 
 ### Manual testing
 
