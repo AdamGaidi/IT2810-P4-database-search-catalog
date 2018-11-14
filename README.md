@@ -168,7 +168,7 @@ Lorem ipsum ...
 
 Open Cypress with 
 ```sh
-npm run cypress:open
+yarn run cypress open
 ```
 
 ### Manual testing
