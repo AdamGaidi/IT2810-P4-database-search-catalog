@@ -27,14 +27,6 @@ const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {
               placeholder="charmander"
             />
           </div>
-
-          <button
-            className="SearchForm__submit"
-            type="submit"
-            disabled={pristine || submitting}
-          >
-            <FontAwesome icon="search" />
-          </button>
         </div>
         <p className="SearchForm__help-text">
           Try searching for "grass" or "pikachu", or write nothing at all to get
@@ -83,5 +75,6 @@ const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {
 
 export default reduxForm({
   form: "searchForm", // a unique identifier for this form
-  initialValues: { sort: "alphabetical" }
+  initialValues: { sort: "alphabetical" },
+  onSubmit: () => {}
 })(SearchForm);
