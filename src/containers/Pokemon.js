@@ -21,8 +21,8 @@ const GET_ALL_POKEMON = gql`
       orderBy: $sortMethod
       filterByType: $selectedFilters
       searchString: $searchString
-      skip: $offset
-      first: $limit
+      offset: $offset
+      limit: $limit
     ) {
       id
       name

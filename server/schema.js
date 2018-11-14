@@ -73,8 +73,8 @@ export const typeDefs = gql`
       searchString: String
       orderBy: PokemonOrderByInput
       filterByType: [Type!]
-      skip: Int
-      first: Int
+      offset: Int
+      limit: Int
     ): [Pokemon]!
     pokemon(name: String!): Pokemon
   }
@@ -107,11 +107,15 @@ export const resolvers = {
           }
         : {};
       const data = await context.db.query.pokemons(
-        { where, orderBy: args.orderBy, skip: args.skip, first: args.first },
+        { where, orderBy: args.orderBy },
         info
       );
 
-      return filterPokemonType(data, args.filterByType);
+      return pagination(
+        filterPokemonType(data, args.filterByType),
+        args.offset,
+        args.limit
+      );
       /*
       return pagination(
         filterPokemonType(data, args.filterByType),
@@ -182,21 +186,30 @@ function filterPokemonType(pokemonCollection, selectedFilters) {
 
   return modifiedPokemonCollection;
 }
-/*
+
 function pagination(pokemonCollection, offset, limit) {
   if (pokemonCollection == null) {
+    console.log("POKEMONCOLLECTION == NULL");
     return pokemonCollection;
-  } else if (pokemonCollection.length <= offset) {
+  } else if (offset <= pokemonCollection.length) {
+    var paginatedPokemonCollection = [];
+    for (let i = 0; i <= limit - 1; i++) {
+      if (pokemonCollection[offset + i]) {
+        paginatedPokemonCollection.push(pokemonCollection[offset + i]);
+      }
+    }
+    /*
     const paginatedPokemonCollection = pokemonCollection.filter(() => {
       for (let i = 0; i <= limit; i++) {
         if (pokemonCollection[offset + i]) {
+          console.log("paginatedPokemonCollection");
           return true;
         }
       }
-    });
-
+    });*/
+    console.log(paginatedPokemonCollection);
     return paginatedPokemonCollection;
   }
 
   return null;
-}*/
+}
