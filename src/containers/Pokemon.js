@@ -2,8 +2,6 @@ import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PokemonItem from "components/PokemonItem";
-import { bindActionCreators } from "redux";
-import { exampleAction } from "../actions/exampleAction";
 import connect from "react-redux/es/connect/connect";
 import PokemonDetailItem from "components/PokemonDetailItem";
 
@@ -49,7 +47,7 @@ const Pokemon = ({
   const sortingMethods = {
     alphabetical: "name_ASC",
     reversealphabetical: "name_DESC",
-    popularity: "stars_ASC"
+    popularity: "stars_DESC"
   };
 
   var filterTypes = Object.keys(selectedFilters).filter(function(key) {

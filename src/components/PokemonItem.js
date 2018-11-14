@@ -4,6 +4,7 @@ import FontAwesome from "components/FontAwesome";
 import "./PokemonItem.css";
 import Pill from "components/Pill";
 import pokemonTypes from "pokemonTypes";
+import StarButton from "components/StarButton";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -24,11 +25,7 @@ const PokemonItem = ({
       <span className="PokemonItem__name">{name}</span>
 
       <div className="PokemonItem__stars">
-        <FontAwesome
-          icon="star"
-          stylePrefix="far"
-          className="PokemonItem__star-icon"
-        />
+        <StarButton name={name} />
         {stars}
       </div>
 
