@@ -1,8 +1,11 @@
 import React from "react";
+import { bindActionCreators } from "redux";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import { connect } from "react-redux";
+
+import { countResultsAction } from "actions/countResultsAction";
 import PokemonItem from "components/PokemonItem";
-import connect from "react-redux/es/connect/connect";
 import PokemonDetailItem from "components/PokemonDetailItem";
 
 const GET_ALL_POKEMON = gql`
@@ -21,6 +24,7 @@ const GET_ALL_POKEMON = gql`
       img
       stars
       types
+      number
     }
   }
 `;
@@ -42,12 +46,14 @@ const Pokemon = ({
   sortMethod,
   selectedFilters,
   searchString,
-  showDetails
+  showDetails,
+  countResultsAction
 }) => {
   const sortingMethods = {
     alphabetical: "name_ASC",
     reversealphabetical: "name_DESC",
-    popularity: "stars_DESC"
+    popularity: "stars_DESC",
+    pokemonnumber: "number_ASC"
   };
 
   var filterTypes = Object.keys(selectedFilters).filter(function(key) {
@@ -70,62 +76,68 @@ const Pokemon = ({
 
         if (error) return <p>Error :(</p>;
 
-        return data.allPokemon.map(({ name, types, stars, img, id }, i) => {
-          if (!showDetails[name]) {
-            return (
-              <PokemonItem
-                id={id}
-                key={id}
-                src={img}
-                stars={stars}
-                hasStarred={false}
-                name={name}
-                types={types}
-              />
-            );
-          } else {
-            return (
-              <Query
-                key={id}
-                query={GET_POKEMON_DETAILS}
-                variables={{ name: name }}
-              >
-                {({ loading, error, data }) => {
-                  if (loading) return <p>Loading...</p>;
+        countResultsAction(data.allPokemon);
 
-                  if (error) return <p>Error :( </p>;
+        return data.allPokemon.map(
+          ({ name, types, stars, img, id, number }, i) => {
+            if (!showDetails[name]) {
+              return (
+                <PokemonItem
+                  id={id}
+                  key={id}
+                  src={img}
+                  stars={stars}
+                  hasStarred={false}
+                  name={name}
+                  types={types}
+                  number={number}
+                />
+              );
+            } else {
+              return (
+                <Query
+                  key={id}
+                  query={GET_POKEMON_DETAILS}
+                  variables={{ name: name }}
+                >
+                  {({ loading, error, data }) => {
+                    if (loading) return <p>Loading...</p>;
 
-                  const {
-                    attack,
-                    defense,
-                    HP,
-                    sp_atk,
-                    sp_def,
-                    speed
-                  } = data.pokemon;
+                    if (error) return <p>Error :( </p>;
 
-                  return (
-                    <PokemonDetailItem
-                      id={id}
-                      key={id}
-                      src={img}
-                      stars={stars}
-                      hasStarred={false}
-                      name={name}
-                      types={types}
-                      attack={attack}
-                      defense={defense}
-                      HP={HP}
-                      sp_atk={sp_atk}
-                      sp_def={sp_def}
-                      speed={speed}
-                    />
-                  );
-                }}
-              </Query>
-            );
+                    const {
+                      attack,
+                      defense,
+                      HP,
+                      sp_atk,
+                      sp_def,
+                      speed
+                    } = data.pokemon;
+
+                    return (
+                      <PokemonDetailItem
+                        id={id}
+                        key={id}
+                        src={img}
+                        stars={stars}
+                        hasStarred={false}
+                        name={name}
+                        types={types}
+                        attack={attack}
+                        defense={defense}
+                        HP={HP}
+                        sp_atk={sp_atk}
+                        sp_def={sp_def}
+                        speed={speed}
+                        number={number}
+                      />
+                    );
+                  }}
+                </Query>
+              );
+            }
           }
-        });
+        );
       }}
     </Query>
   );
@@ -141,4 +153,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Pokemon);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ countResultsAction }, dispatch);
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Pokemon);

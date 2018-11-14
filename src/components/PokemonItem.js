@@ -1,14 +1,15 @@
 import React from "react";
-import Card from "components/Card";
-import FontAwesome from "components/FontAwesome";
-import "./PokemonItem.css";
-import Pill from "components/Pill";
-import pokemonTypes from "pokemonTypes";
-import StarButton from "components/StarButton";
-
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+
+import pokemonTypes from "pokemonTypes";
 import { toggleDetailsAction } from "actions/pokemonDetailActions";
+
+import Card from "components/Card";
+import FontAwesome from "components/FontAwesome";
+import Pill from "components/Pill";
+import StarButton from "components/StarButton";
+import "./PokemonItem.css";
 
 const PokemonItem = ({
   src,
@@ -16,13 +17,16 @@ const PokemonItem = ({
   hasStarred,
   name,
   types,
+  number,
   toggleDetailsAction
 }) => {
   return (
     <Card className="PokemonItem">
       <img src={src} alt={name} className="PokemonItem__img" />
 
-      <span className="PokemonItem__name">{name}</span>
+      <span className="PokemonItem__name">
+        <span className="PokemonItem__number">{number}</span> {name}
+      </span>
 
       <div className="PokemonItem__stars">
         <StarButton name={name} />
@@ -50,21 +54,12 @@ const PokemonItem = ({
   );
 };
 
-//export default PokemonItem;
-
-//--Redux--//
-const mapStateToProps = state => {
-  return {
-    examplePropOne: state.test2.examplePropOne
-  };
-};
-
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ toggleDetailsAction }, dispatch);
 };
 
 // export default App;
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(PokemonItem);

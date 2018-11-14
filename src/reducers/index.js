@@ -1,9 +1,7 @@
 import { combineReducers } from "redux";
 import { reducer as reduxFormReducer } from "redux-form";
 
-import pokemon from "./pokemon";
-import test from "./test";
-import test2 from "./test2";
+import countPokemonResults from "./countPokemonResults";
 import togglePokemonDetails from "./togglePokemonDetails";
 import toggleStarPokemon from "./toggleStarPokemon";
 
@@ -11,8 +9,6 @@ import toggleStarPokemon from "./toggleStarPokemon";
 export default combineReducers({
   togglePokemonDetails,
   toggleStarPokemon,
-  pokemon,
-  test,
-  test2,
+  countPokemonResults,
   form: reduxFormReducer
 });

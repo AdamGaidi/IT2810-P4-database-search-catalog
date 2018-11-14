@@ -1,21 +1,14 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { exampleAction } from "actions/exampleAction";
 
 import SearchForm from "containers/SearchForm";
 import Pokemon from "containers/Pokemon";
 import LoadButton from "components/LoadButton";
-
 import "./App.css";
 
 class App extends Component {
-  exampleFunction() {
-    this.props.exampleAction();
-  }
-
   render() {
-    this.exampleFunction();
     return (
       <div className="App">
         <div>
@@ -25,8 +18,11 @@ class App extends Component {
 
           <main className="App__main-content">
             <SearchForm />
+            <div className="App__results">
+              You got {this.props.numResults} result
+              {this.props.numResults === 1 ? "" : "s"}
+            </div>
             <Pokemon />
-            {/* <PokemonDetail /> */}
             <LoadButton />
           </main>
         </div>
@@ -44,25 +40,11 @@ class App extends Component {
     );
   }
 }
-// These properties will be accessible on this component’s props.
-// This way, any changes made to examplePropOne, even if from
-// another component, will flow through and be rendered in this
-// component. You don’t have to pick out all the properties from
-// the state object in your mapStateToProps function — only bring
-// in the ones your component cares about!
+
 const mapStateToProps = state => {
   return {
-    examplePropOne: state.test2.examplePropOne,
-    examplePropTwo: state.test2.examplePropTwo
+    numResults: state.countPokemonResults.numPokemonResults
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ exampleAction }, dispatch);
-};
-
-// export default App;
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps)(App);
