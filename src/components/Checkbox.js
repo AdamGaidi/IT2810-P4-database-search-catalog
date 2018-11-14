@@ -1,11 +1,23 @@
 import React from "react";
 import { Field } from "redux-form";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { resetOffset } from "actions/offsetActions";
 import "./Checkbox.css";
 
-const CheckBox = ({ type }) => {
+const CheckBox = ({ type, selectedFilters, resetOffset }) => {
   return (
     <div className="Checkbox">
-      <Field name={type} id={type} component="input" type="checkbox" />
+      <Field
+        name={type}
+        id={type}
+        component="input"
+        type="checkbox"
+        onChange={() => {
+          resetOffset();
+          console.log("HEI");
+        }}
+      />
       <label className="Checkbox__label" htmlFor={type}>
         {type}
       </label>
@@ -13,4 +25,12 @@ const CheckBox = ({ type }) => {
   );
 };
 
-export default CheckBox;
+//--Redux--//
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ resetOffset }, dispatch);
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CheckBox);

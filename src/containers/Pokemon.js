@@ -2,6 +2,8 @@ import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import PokemonItem from "components/PokemonItem";
+
+import { incrementOffset } from "actions/offsetActions";
 import { bindActionCreators } from "redux";
 import connect from "react-redux/es/connect/connect";
 import PokemonDetailItem from "components/PokemonDetailItem";
@@ -48,7 +50,9 @@ const Pokemon = ({
   sortMethod,
   selectedFilters,
   searchString,
-  showDetails
+  showDetails,
+  offset,
+  incrementOffset
 }) => {
   const sortingMethods = {
     alphabetical: "name_ASC",
@@ -138,7 +142,8 @@ const Pokemon = ({
               }
             })}
             <LoadButton
-              onClick={() =>
+              onClick={() => {
+                incrementOffset();
                 fetchMore({
                   variables: {
                     offset: data.allPokemon.length
@@ -152,8 +157,8 @@ const Pokemon = ({
                       ]
                     });
                   }
-                })
-              }
+                });
+              }}
             />
           </div>
         );
@@ -163,13 +168,21 @@ const Pokemon = ({
 };
 
 //--Redux--//
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ incrementOffset }, dispatch);
+};
+
 const mapStateToProps = state => {
   return {
     sortMethod: state.form.searchForm.values.sort,
     selectedFilters: state.form.searchForm.values,
     searchString: state.form.searchForm.values.search,
-    showDetails: state.togglePokemonDetails
+    showDetails: state.togglePokemonDetails,
+    offset: state.offset
   };
 };
 
-export default connect(mapStateToProps)(Pokemon);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Pokemon);

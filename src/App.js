@@ -5,7 +5,6 @@ import { exampleAction } from "actions/exampleAction";
 
 import SearchForm from "containers/SearchForm";
 import Pokemon from "containers/Pokemon";
-import LoadButton from "components/LoadButton";
 
 import "./App.css";
 

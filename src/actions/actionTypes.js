@@ -21,3 +21,6 @@ export const EXAMPLE_YAY = "EXAMPLE_YAY";
 export const EXAMPLE_TWO = "EXAMPLE_TWO";
 
 export const TOGGLE_DETAILS = "TOGGLE_DETAILS";
+
+export const INCREMENT_OFFSET = "INCREMENT_OFFSET";
+export const RESET_OFFSET = "RESET_OFFSET";
