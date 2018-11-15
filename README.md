@@ -166,10 +166,26 @@ Lorem ipsum ...
 
 ### Cypress
 
+In this project we strongly focused on end-to-end testing, using Cypress. 
+Cypress is a testing framework that makes this type of testing easier. 
+
 Open Cypress with 
 ```sh
-yarn run cypress open
+$ yarn run cypress open
 ```
+and press "Run all specs" to run the tests. 
+Alternatively use `npx cypress run` to run tests without UI in the terminal.
+
+We have tested the following functionalities in Cypress:
+* Setup, site loads
+* Searching Pokemon by name
+* Sorting Pokemon by popularity
+* Filtering Pokemon by type
+* Starring Pokemon
+* Expanding a detailed view of a Pokemon
+
+By including these test we have tested a lot of the functionality of the web page,
+without explicitly testing every little part. 
 
 ### Manual testing
 

@@ -1,3 +1,7 @@
+/*
+  Card component, which encompasses all components on the page.
+*/
+
 import styled from "styled-components";
 
 const Card = styled.div.attrs({

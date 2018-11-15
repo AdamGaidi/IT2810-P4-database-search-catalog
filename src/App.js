@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-// import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import SearchForm from "containers/SearchForm";
 import Pokemon from "containers/Pokemon";
-
 import "./App.css";
 
 class App extends Component {

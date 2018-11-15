@@ -1,5 +1,4 @@
 import { gql } from "apollo-server-express";
-import _, { find } from "lodash";
 
 export const typeDefs = gql`
   enum Type {
@@ -205,7 +204,7 @@ export const resolvers = {
 };
 
 function filterPokemonType(pokemonCollection, selectedFilters) {
-  //If length === 0 or undefined all types are selected
+  // If length === 0 or undefined => all types are selected
   if (selectedFilters == null || Object.keys(selectedFilters).length === 0) {
     return pokemonCollection;
   }

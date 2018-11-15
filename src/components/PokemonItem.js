@@ -1,28 +1,15 @@
 import React from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-import { toggleDetailsAction } from "actions/pokemonDetailActions";
-
+import StarButton from "containers/StarButtonContainer";
 import Card from "components/Card";
 import FontAwesome from "components/FontAwesome";
-import Pill from "components/Pill";
-import pokemonTypes from "constants/pokemonTypes";
-import StarButton from "components/StarButton";
-import "./PokemonItem.css";
+import "./css/PokemonItem.css";
 
-const PokemonItem = ({
-  src,
-  stars,
-  hasStarred,
-  name,
-  types,
-  number,
-  toggleDetailsAction
-}) => {
+const PokemonItem = ({ imgSrc, stars, name, types, number, onClick }) => {
   return (
     <Card className="PokemonItem">
-      <img src={src} alt={name} className="PokemonItem__img" />
+      <img src={imgSrc} alt={name} className="PokemonItem__img" />
 
       <span className="PokemonItem__name">
         <span className="PokemonItem__number">{number}</span> {name}
@@ -33,17 +20,9 @@ const PokemonItem = ({
         {stars}
       </div>
 
-      <div className="PokemonItem__types">
-        {types &&
-          types.map((type, i) => {
-            return <Pill key={type} text={type} color={pokemonTypes[type]} />;
-          })}
-      </div>
+      <div className="PokemonItem__types">{types}</div>
 
-      <button
-        onClick={() => toggleDetailsAction(name)}
-        className="PokemonItem__show-more"
-      >
+      <button onClick={() => onClick(name)} className="PokemonItem__show-more">
         Click to see more
         <FontAwesome
           icon="angle-down"
@@ -54,12 +33,13 @@ const PokemonItem = ({
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ toggleDetailsAction }, dispatch);
+PokemonItem.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  types: PropTypes.arrayOf(PropTypes.element).isRequired,
+  number: PropTypes.string.isRequired,
+  stars: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
-// export default App;
-export default connect(
-  null,
-  mapDispatchToProps
-)(PokemonItem);
+export default PokemonItem;

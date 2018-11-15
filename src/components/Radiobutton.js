@@ -1,12 +1,10 @@
 import React from "react";
 import { Field } from "redux-form";
-import "./Radiobutton.css";
+import PropTypes from "prop-types";
 
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { resetOffset } from "actions/offsetActions";
+import "./css/Radiobutton.css";
 
-const Radiobutton = ({ name, label, value, resetOffset }) => {
+const Radiobutton = ({ name, label, value, onChange }) => {
   return (
     <div className="Radiobutton">
       <Field
@@ -15,7 +13,7 @@ const Radiobutton = ({ name, label, value, resetOffset }) => {
         type="radio"
         value={value}
         id={value}
-        onChange={() => resetOffset()}
+        onChange={() => onChange()}
       />
       <label className="Radiobutton__label" htmlFor={value}>
         {label}
@@ -24,12 +22,11 @@ const Radiobutton = ({ name, label, value, resetOffset }) => {
   );
 };
 
-//--Redux--//
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ resetOffset }, dispatch);
+Radiobutton.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Radiobutton);
+export default Radiobutton;
