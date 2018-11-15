@@ -13,12 +13,11 @@
 // Since strings are prone to typos and duplicates it’s better to
 // have action types declared as constants.
 
-export const INCREMENT = "INCREMENT";
-export const DECREMENT = "DECREMENT";
-
-export const ADD_POKEMON = "ADD_POKEMON";
-export const EXAMPLE_YAY = "EXAMPLE_YAY";
-export const EXAMPLE_TWO = "EXAMPLE_TWO";
+export const COUNT_RESULTS = "COUNT_RESULTS";
 
 export const TOGGLE_DETAILS = "TOGGLE_DETAILS";
+
+export const INCREMENT_OFFSET = "INCREMENT_OFFSET";
+export const RESET_OFFSET = "RESET_OFFSET";
+
 export const TOGGLE_STAR = "TOGGLE_STAR";

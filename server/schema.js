@@ -73,6 +73,8 @@ export const typeDefs = gql`
       searchString: String
       orderBy: PokemonOrderByInput
       filterByType: [Type!]
+      offset: Int
+      limit: Int
     ): [Pokemon]!
     pokemon(name: String!): Pokemon
   }
@@ -110,7 +112,12 @@ export const resolvers = {
         { where, orderBy: args.orderBy },
         info
       );
-      return filterPokemonType(data, args.filterByType);
+
+      return pagination(
+        filterPokemonType(data, args.filterByType),
+        args.offset,
+        args.limit
+      );
     },
     // Gets a pokemon from db based on name.
     pokemon: (root, args, context, info) => {
@@ -198,8 +205,8 @@ export const resolvers = {
 };
 
 function filterPokemonType(pokemonCollection, selectedFilters) {
-  //If length === 0 all types are selected
-  if (Object.keys(selectedFilters).length === 0) {
+  //If length === 0 or undefined all types are selected
+  if (selectedFilters == null || Object.keys(selectedFilters).length === 0) {
     return pokemonCollection;
   }
 
@@ -212,4 +219,21 @@ function filterPokemonType(pokemonCollection, selectedFilters) {
   });
 
   return modifiedPokemonCollection;
+}
+
+function pagination(pokemonCollection, offset, limit) {
+  if (pokemonCollection == null) {
+    return pokemonCollection;
+  } else if (offset <= pokemonCollection.length) {
+    var paginatedPokemonCollection = [];
+    for (let i = 0; i <= limit - 1; i++) {
+      if (pokemonCollection[offset + i]) {
+        paginatedPokemonCollection.push(pokemonCollection[offset + i]);
+      }
+    }
+
+    return paginatedPokemonCollection;
+  }
+
+  return null;
 }

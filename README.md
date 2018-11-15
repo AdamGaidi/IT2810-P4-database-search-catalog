@@ -133,6 +133,7 @@ We have used the Fetch API with async/await that comes with ES7 to handle asynch
 
 Lorem ipsum ... What is Express used for...
 
+
 ### GraphQL
 
 Lorem ipsum ...
@@ -165,7 +166,10 @@ Lorem ipsum ...
 
 ### Cypress
 
-Lorem ipsum ...
+Open Cypress with 
+```sh
+yarn run cypress open
+```
 
 ### Manual testing
 

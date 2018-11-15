@@ -1,7 +1,5 @@
 describe("Search pikachu", () => {
   it("Succesfully searches and retrieves pikachu", () => {
-    // Visit base url
-    cy.visit("/");
     // Search for Pikachu in the input field
     cy.get(".SearchForm__search-bar-input")
       .type("Pikachu")
