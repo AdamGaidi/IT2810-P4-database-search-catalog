@@ -1,10 +1,10 @@
 import React from "react";
 import Card from "components/Card";
-import FontAwesome from "components/FontAwesome";
 import Pill from "components/Pill";
 import Stat from "components/Stat";
 import pokemonTypes from "pokemonTypes";
 import "./PokemonDetailItem.css";
+import StarButton from "components/StarButton";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -55,11 +55,7 @@ const PokemonDetailItem = ({
       </div>
 
       <div className="PokemonDetailItem__stars">
-        <FontAwesome
-          icon="star"
-          stylePrefix="far"
-          className="PokemonDetailItem__star-icon"
-        />
+        <StarButton name={name} />
         {stars}
       </div>
 
@@ -73,7 +69,6 @@ const PokemonDetailItem = ({
   );
 };
 
-//--Redux--//
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ toggleDetailsAction }, dispatch);
 };

@@ -36,3 +36,11 @@
   text-align: center;
   color: var(--light-gray);
 }
+
+.App__results {
+  margin: 0.8rem 1rem;
+  text-align: center;
+  opacity: 0.8;
+  color: var(--dark-gray);
+  font-style: italic;
+}

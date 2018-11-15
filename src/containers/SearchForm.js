@@ -27,22 +27,14 @@ const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {
               placeholder="charmander"
             />
           </div>
-
-          <button
-            className="SearchForm__submit"
-            type="submit"
-            disabled={pristine || submitting}
-          >
-            <FontAwesome icon="search" />
-          </button>
         </div>
         <p className="SearchForm__help-text">
-          Try searching for "grass" or "pikachu", or write nothing at all to get
-          everything
+          Try searching for a pokemon like "pikachu", or "char", or write
+          nothing at all to get everything
         </p>
       </Card>
 
-      <Card margin="1rem 0">
+      <Card margin="1rem 0 0">
         <div>
           <header className="SearchForm__options-header">
             <FontAwesome
@@ -63,6 +55,7 @@ const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {
             Sort ...
           </header>
           <div className="SearchForm__sort">
+            <Radiobutton name="sort" value="pokemonnumber" label="Number" />
             <Radiobutton
               name="sort"
               value="alphabetical"
@@ -83,5 +76,6 @@ const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {
 
 export default reduxForm({
   form: "searchForm", // a unique identifier for this form
-  initialValues: { sort: "alphabetical" }
+  initialValues: { sort: "pokemonnumber" },
+  onSubmit: () => {}
 })(SearchForm);

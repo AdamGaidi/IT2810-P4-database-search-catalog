@@ -1,11 +1,14 @@
 import React from "react";
+import { bindActionCreators } from "redux";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import { connect } from "react-redux";
+
+import { countResultsAction } from "actions/countResultsAction";
 import PokemonItem from "components/PokemonItem";
 
 import { incrementOffset } from "actions/offsetActions";
-import { bindActionCreators } from "redux";
-import connect from "react-redux/es/connect/connect";
+
 import PokemonDetailItem from "components/PokemonDetailItem";
 import LoadButton from "components/LoadButton";
 
@@ -29,6 +32,7 @@ const GET_ALL_POKEMON = gql`
       img
       stars
       types
+      number
     }
   }
 `;
@@ -52,12 +56,14 @@ const Pokemon = ({
   searchString,
   showDetails,
   offset,
-  incrementOffset
+  incrementOffset,
+  countResultsAction
 }) => {
   const sortingMethods = {
     alphabetical: "name_ASC",
     reversealphabetical: "name_DESC",
-    popularity: "stars_ASC"
+    popularity: "stars_DESC",
+    pokemonnumber: "number_ASC"
   };
 
   var filterTypes = Object.keys(selectedFilters).filter(function(key) {
@@ -83,9 +89,12 @@ const Pokemon = ({
 
         if (error) return <p>Error :(</p>;
 
+
+        countResultsAction(data.allPokemon);
+
         return (
           <div>
-            {data.allPokemon.map(({ name, types, stars, img, id }, i) => {
+            {data.allPokemon.map(({ name, types, stars, img, id, number }, i) => {
               if (!showDetails[name]) {
                 return (
                   <PokemonItem
@@ -96,6 +105,7 @@ const Pokemon = ({
                     hasStarred={false}
                     name={name}
                     types={types}
+                    number={number}
                   />
                 );
               } else {
@@ -134,6 +144,7 @@ const Pokemon = ({
                           sp_atk={sp_atk}
                           sp_def={sp_def}
                           speed={speed}
+                          number={number}
                         />
                       );
                     }}
@@ -167,11 +178,6 @@ const Pokemon = ({
   );
 };
 
-//--Redux--//
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ incrementOffset }, dispatch);
-};
-
 const mapStateToProps = state => {
   return {
     sortMethod: state.form.searchForm.values.sort,
@@ -180,6 +186,10 @@ const mapStateToProps = state => {
     showDetails: state.togglePokemonDetails,
     offset: state.offset
   };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ incrementOffset, countResultsAction }, dispatch);
 };
 
 export default connect(
