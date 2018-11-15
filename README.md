@@ -171,7 +171,7 @@ Open Cypress with
 yarn run cypress open
 ```
 and press "Run all specs" to run the tests. 
-Alternatively use ´npx cypress run` to run in the terminal.
+Alternatively use `npx cypress run` to run in the terminal.
 
 ### Manual testing
 
