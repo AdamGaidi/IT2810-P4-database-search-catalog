@@ -16,4 +16,8 @@
 export const COUNT_RESULTS = "COUNT_RESULTS";
 
 export const TOGGLE_DETAILS = "TOGGLE_DETAILS";
+
+export const INCREMENT_OFFSET = "INCREMENT_OFFSET";
+export const RESET_OFFSET = "RESET_OFFSET";
+
 export const TOGGLE_STAR = "TOGGLE_STAR";

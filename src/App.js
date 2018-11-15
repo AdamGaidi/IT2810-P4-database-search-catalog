@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import SearchForm from "containers/SearchForm";
 import Pokemon from "containers/Pokemon";
-import LoadButton from "components/LoadButton";
+
 import "./App.css";
 
 class App extends Component {
@@ -23,7 +23,6 @@ class App extends Component {
               {this.props.numResults === 1 ? "" : "s"}
             </div>
             <Pokemon />
-            <LoadButton />
           </main>
         </div>
         <footer className="App__footer">
