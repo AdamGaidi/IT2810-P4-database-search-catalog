@@ -116,12 +116,6 @@ export const resolvers = {
         args.offset,
         args.limit
       );
-      /*
-      return pagination(
-        filterPokemonType(data, args.filterByType),
-        args.skip,
-        args.first
-      );*/
     },
     // Gets a pokemon from db based on name.
     pokemon: (root, args, context, info) => {
@@ -189,7 +183,6 @@ function filterPokemonType(pokemonCollection, selectedFilters) {
 
 function pagination(pokemonCollection, offset, limit) {
   if (pokemonCollection == null) {
-    console.log("POKEMONCOLLECTION == NULL");
     return pokemonCollection;
   } else if (offset <= pokemonCollection.length) {
     var paginatedPokemonCollection = [];
@@ -198,16 +191,7 @@ function pagination(pokemonCollection, offset, limit) {
         paginatedPokemonCollection.push(pokemonCollection[offset + i]);
       }
     }
-    /*
-    const paginatedPokemonCollection = pokemonCollection.filter(() => {
-      for (let i = 0; i <= limit; i++) {
-        if (pokemonCollection[offset + i]) {
-          console.log("paginatedPokemonCollection");
-          return true;
-        }
-      }
-    });*/
-    console.log(paginatedPokemonCollection);
+
     return paginatedPokemonCollection;
   }
 

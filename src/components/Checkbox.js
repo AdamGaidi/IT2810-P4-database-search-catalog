@@ -13,10 +13,7 @@ const CheckBox = ({ type, selectedFilters, resetOffset }) => {
         id={type}
         component="input"
         type="checkbox"
-        onChange={() => {
-          resetOffset();
-          console.log("HEI");
-        }}
+        onChange={() => resetOffset()}
       />
       <label className="Checkbox__label" htmlFor={type}>
         {type}
