@@ -1,12 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import pokemonTypes from "pokemonTypes";
-
 import StarButton from "containers/StarButtonContainer";
 import Card from "components/Card";
 import FontAwesome from "components/FontAwesome";
-import Pill from "components/Pill";
 import "./css/PokemonItem.css";
 
 const PokemonItem = ({ imgSrc, stars, name, types, number, onClick }) => {
