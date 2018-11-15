@@ -168,7 +168,7 @@ Lorem ipsum ...
 
 Open Cypress with 
 ```sh
-yarn run cypress open
+$ yarn run cypress open
 ```
 and press "Run all specs" to run the tests. 
 Alternatively use `npx cypress run` to run in the terminal.
