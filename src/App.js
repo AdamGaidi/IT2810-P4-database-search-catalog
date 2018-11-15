@@ -17,7 +17,7 @@ class App extends Component {
           <main className="App__main-content">
             <SearchForm />
             <div className="App__results">
-              You got {this.props.numResults} result
+              Showing {this.props.numResults} result
               {this.props.numResults === 1 ? "" : "s"}
             </div>
             <Pokemon />
