@@ -2,7 +2,7 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import pokemonTypes from "pokemonTypes";
+import pokemonTypes from "constants/pokemonTypes";
 import { toggleDetailsAction } from "actions/pokemonDetailActions";
 
 import PokemonItem from "components/PokemonItem";
