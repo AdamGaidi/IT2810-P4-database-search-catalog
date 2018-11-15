@@ -170,6 +170,7 @@ Open Cypress with
 ```sh
 yarn run cypress open
 ```
+and press "Run all specs" to run the tests. 
 
 ### Manual testing
 
