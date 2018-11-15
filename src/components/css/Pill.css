@@ -1,10 +1,14 @@
+/*
+  Styles for the Pill component
+*/
+
 .Pill {
   width: 5rem;
   display: inline-block;
   text-align: center;
   padding: 0.5rem;
   border-radius: 50px;
-  color: white;
+  color: var(--white);
   font-size: 0.8rem;
   font-weight: bold;
   letter-spacing: 1px;

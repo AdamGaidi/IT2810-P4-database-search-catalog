@@ -1,3 +1,7 @@
+/*
+  Styles for the Stat component
+*/
+
 .Stat {
   color: var(--dark-gray);
   text-align: right;

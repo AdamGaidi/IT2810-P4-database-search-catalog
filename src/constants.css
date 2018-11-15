@@ -1,5 +1,11 @@
+/*
+  Colors and constants used in the app
+
+  To use e.g. the dark gray color you write var(--dark-gray) in your css where
+  you want it. It's already imported in index.js, so you don't have to.
+*/
+
 :root {
-  /* Colors used in the app */
   --light-gray: #efefef; /* background color */
   --gray: #a7a7a7; /* Used for help text, etc. */
   --dark-gray: #757575; /* primary gray color*/
@@ -10,6 +16,6 @@
   --max-width: 50rem;
 
   /* Fonts */
-  --raleway: "Raleway", sans-serif;
-  --roboto: "Roboto", sans-serif;
+  --raleway: "Raleway", sans-serif; /* Standard font */
+  --roboto: "Roboto", sans-serif; /* Roboto is used for all numbers */
 }

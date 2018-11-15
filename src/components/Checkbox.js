@@ -1,33 +1,29 @@
 import React from "react";
 import { Field } from "redux-form";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { resetOffset } from "actions/offsetActions";
-import "./Checkbox.css";
+import PropTypes from "prop-types";
 
-const CheckBox = ({ type, selectedFilters, resetOffset }) => {
+import "./css/Checkbox.css";
+
+const Checkbox = ({ identifier, onChange }) => {
   return (
     <div className="Checkbox">
       <Field
-        name={type}
-        id={type}
+        name={identifier}
+        id={identifier}
         component="input"
         type="checkbox"
-        onChange={() => resetOffset()}
+        onChange={() => onChange()}
       />
-      <label className="Checkbox__label" htmlFor={type}>
-        {type}
+      <label className="Checkbox__label" htmlFor={identifier}>
+        {identifier}
       </label>
     </div>
   );
 };
 
-//--Redux--//
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ resetOffset }, dispatch);
+Checkbox.propTypes = {
+  identifier: PropTypes.string.isRequired,
+  onChange: PropTypes.func
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CheckBox);
+export default Checkbox;
