@@ -1,8 +1,3 @@
-beforeEach(() => {
-  // Visit base url
-  cy.visit("http://localhost:3000/");
-});
-
 describe("Initial pagination load", function() {
   it("Successfully loads the initial 5 Pokémon", function() {
     cy.get(".PokemonItem").should("have.length", 5);
