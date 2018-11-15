@@ -1,3 +1,7 @@
+/*
+  Styles for the PokemonDetailItem component
+*/
+
 .PokemonDetailItem {
   position: relative;
 }
@@ -49,6 +53,13 @@
   flex-basis: 32%;
   font-size: 1.5rem;
   letter-spacing: 2px;
+}
+
+.PokemonDetailItem__number {
+  font-size: 0.9rem;
+  font-family: var(--roboto);
+  margin-right: 10px;
+  display: block;
 }
 
 .PokemonDetailItem__stars {

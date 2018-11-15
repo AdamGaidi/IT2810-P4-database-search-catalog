@@ -1,3 +1,7 @@
+/*
+  Styles for the PokemonItem component
+*/
+
 .PokemonItem {
   display: flex;
   align-items: center;
@@ -34,19 +38,6 @@
   font-size: 0.9rem;
   font-family: var(--roboto);
   flex-basis: 4rem;
-}
-
-.PokemonItem__star-icon {
-  color: var(--yellow);
-  font-size: 1.3rem;
-  margin: 0 0.4rem 0 1rem;
-}
-
-.PokemonItem__star-button {
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 0;
 }
 
 .PokemonItem__types {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Pill.css";
+import "./css/Pill.css";
 
 const Pill = ({ color, text }) => {
   return (

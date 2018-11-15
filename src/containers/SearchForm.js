@@ -1,11 +1,11 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import FontAwesome from "components/FontAwesome";
-import pokemonTypes from "pokemonTypes";
-import Checkbox from "components/Checkbox";
-import Radiobutton from "components/Radiobutton";
-import Card from "components/Card";
 
+import pokemonTypes from "pokemonTypes";
+import Checkbox from "containers/CheckboxContainer";
+import Radiobutton from "containers/RadiobuttonContainer";
+import FontAwesome from "components/FontAwesome";
+import Card from "components/Card";
 import "./SearchForm.css";
 
 const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {

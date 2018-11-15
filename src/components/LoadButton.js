@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoadButton.css";
+import "./css/LoadButton.css";
 
 const LoadButton = ({ onClick }) => {
   return (
