@@ -22,3 +22,6 @@ yarn-error.log*
 
 data/
 .idea/
+
+cypress/fixtures/example.json
+cypress/videos

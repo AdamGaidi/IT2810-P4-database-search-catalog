@@ -10,6 +10,44 @@ We wanted to make a Pokédex, where it is possible to search, filter and sort po
 
 In the future we would have liked to expand the data set, as we only have 24 pokemon at the time, and added the possibility for even more filters, and also more details about each pokemon. But as this is a prototype, we are very pleased with the current result as it is sufficient to demonstrate the technologies used. The GitLab repo also has several enhancement issues which describes what would be fixed given the time.
 
+## Table of Contents
+
+- [What our site does](#what-our-site-does)
+- [Getting started](#getting-started)
+  - [Setting up](#setting-up)
+  - [Useful scripts](#useful-scripts)
+- [Planning and starting the Project](#planning-and-starting-the-project)
+- [Project structure](#project-structure)
+- [Technology](#technology)
+  - [React](#react)
+  - [Redux](#redux)
+    - [Redux forms](#redux-forms)
+  - [AJAX](#ajax)
+  - [Express](#express)
+  - [GraphQL](#graphql)
+    - [GraphQL client](#graphql-client)
+    - [GraphQL server](#graphql-server)
+      - [TypeDefs](#typedefs)
+      - [Resolvers](#resolvers)
+    - [Prisma](#prisma)
+  - [Docker](#docker)
+  - [Cypress](#cypress)
+  - [Jest](#jest)
+- [Implementation of main functionality](#implementation-of-main-functionality)
+  - [Pagination](#pagination)
+  - [Sorting](#sorting)
+  - [Filtering](#filtering)
+  - [Search](#search)
+  - [Posting (mutating db)](#posting--mutating-db-)
+- [Git & GitLab](#git---gitlab)
+- [Testing](#testing)
+  - [Cypress](#cypress-1)
+  - [Unit testing with Jest](#unit-testing-with-jest)
+  - [Manual testing](#manual-testing)
+- [Guide on deploying](#guide-on-deploying)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+
 ## Getting started
 
 Running the backend of this project requires [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce) and [docker-compose](https://docs.docker.com/compose/install/), so go ahead and install those if you want to run the project locally.
@@ -233,7 +271,7 @@ until we were ready to hand it in, but we decided against it for this project. T
 
 ## Testing
 
-In this project we tested mostly using `Cypress` and manual testing. We found that the testing done with Cypress is very thorough, and prioritised these test.
+In this project we tested mostly using `Cypress` and manual testing. We found that the testing done with Cypress is very thorough, and prioritised these test. We also used `Jest` for simple unit testing. As we have used `Jest` in previous projects we chose to not prioritize a rigorous unit-testing scheme.
 
 ### Cypress
 
@@ -264,11 +302,12 @@ without explicitly testing every little part. Especially the pagination was thor
 
 ### Unit testing with Jest
 
-Unit testing is a very important aspect of the test process. As end-to-end testing only deals with the testing of integrated units. It’s just as important to test units in an isolated environment to ensure that they’re working as intended.
+Unit testing is a very important aspect of the test process. As end-to-end testing deals with the testing of integrated units. It is also important to test units in an isolated environment to ensure that they’re working as intended.
 
-For this project we did not prioritize unit tests as we have done this before. However we recognize its importance, and would be careful to write tests for the most notable edge- and common cases for our units.
+For this project we did not prioritize unit tests as we have done this before. However we recognize its importance, and would in the future be careful to write tests for the most notable edge- and common cases for our units.
 
-An example of simple unit tests can be found in `/server/__tests__`.
+An example of simple unit tests can be found in `/server/__tests__` where we test our custom backend functions.
+
 These tests can be run by using the following command from the root folder:
 
 ```sh

@@ -79,7 +79,7 @@ describe("Stops loading new Pokémon once every Pokémon has been fetched", func
   });
 });
 
-describe("No Pokémon are skipped or duplicated when loading all 24 while toggling various filters", function() {
+describe("No Pokémon are skipped when loading all 24 while toggling various filters", function() {
   it("Loads 20 Pokémon, then toggles water filter on and off and loads the rest", function() {
     cy.get(".LoadButton").click();
     cy.get(".LoadButton").click();
@@ -89,23 +89,5 @@ describe("No Pokémon are skipped or duplicated when loading all 24 while toggli
     cy.get("#water").uncheck();
     cy.get(".LoadButton").click();
     cy.get(".PokemonItem").should("have.length", 24);
-  });
-  it("Does not load duplicates", function() {
-    cy.get(".LoadButton").click();
-    cy.get(".LoadButton").click();
-    cy.get("#water").check();
-    cy.get("#water").uncheck();
-    cy.get(".LoadButton").click();
-    cy.get(".LoadButton").click();
-    cy.get(".PokemonItem").should("have.length", 24);
-    let loadedPokemon = [];
-    cy.get(".PokemonItem").each(pokemonItem => loadedPokemon.push(pokemonItem));
-    let flag = true;
-    for (let i = 0; i <= loadedPokemon.length - 1; i++) {
-      if (loadedPokemon[i + 1] === loadedPokemon[i]) {
-        flag = false;
-      }
-    }
-    expect(flag).to.be.true;
   });
 });
