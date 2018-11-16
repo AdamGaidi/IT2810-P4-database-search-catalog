@@ -18,6 +18,11 @@ const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
 });
 
+// Use this instead for production
+// const client = new ApolloClient({
+//   uri: "http://it2810-01.idi.ntnu.no:4000/graphql"
+// });
+
 const store = createStore(
   rootReducer,
   // To enable the usage of Redux DevTools in Chrome
