@@ -38,8 +38,8 @@ In the future we would have liked to expand the data set, as we only have 24 pok
   - [Sorting](#sorting)
   - [Filtering](#filtering)
   - [Search](#search)
-  - [Posting (mutating db)](#posting--mutating-db-)
-- [Git & GitLab](#git---gitlab)
+  - [Posting (mutating db)](#posting)
+- [Git & GitLab](#git-and-gitlab)
 - [Testing](#testing)
   - [Cypress](#cypress-1)
   - [Unit testing with Jest](#unit-testing-with-jest)
@@ -258,11 +258,11 @@ We had to add our own implementation of filtering due to a lack of support for f
 
 Search is handled through the Prisma API by using the `name_contains` argument in the server side queries.
 
-### Posting (mutating db)
+### Posting
 
 One requirement for this project was to allow for a user to mutate the database in some way. We have solved this by adding two mutations to our api, `starPokemon` and `unStarPokemon`, which increments and decrements the amount of stars a pokemon has. These mutations make use of the `updatePokemon` method on the database API to mutate the database.
 
-## Git & GitLab
+## Git and GitLab
 
 Gitlab has been a great tool in this project, and we have used the project board actively in our development. Early on we decomposed the project into issues, and added labels to categorise these. The different labels include “sub task”, “user story”, “technical task” and “enhancement”. We have agreed upon naming conventions for naming branches, and made sure to reference issue numbers in commit messages.
 
