@@ -210,14 +210,14 @@ export const resolvers = {
 };
 
 /*
-args: 
-pokemonCollection: Contains sorted set of all currently fetched pokémon. 
+args:
+pokemonCollection: Contains sorted set of all currently fetched pokémon.
 selectedFilters: Collection of all the filters selected in the frontend client.
 
 This function is an extension of the backend API. It takes in the selected filters and a collection to determine the next
-set of data to return to the caller by removing data which does not match the filters. 
+set of data to return to the caller by removing data which does not match the filters.
 */
-function filterPokemonType(pokemonCollection, selectedFilters) {
+export function filterPokemonType(pokemonCollection, selectedFilters) {
   // If length === 0 or undefined => all types are selected
   if (selectedFilters == null || Object.keys(selectedFilters).length === 0) {
     return pokemonCollection;
@@ -235,15 +235,15 @@ function filterPokemonType(pokemonCollection, selectedFilters) {
 }
 
 /*
-args: 
-pokemonCollection: Contains sorted set of all currently fetched pokémon. 
+args:
+pokemonCollection: Contains sorted set of all currently fetched pokémon.
 Offset: Int - Determines startindex for fetching
 limit: Int - Determines how many elements to fetch
 
 This function is an extension of the backend API. It takes in two integers and a collection to determine the next
-set of data to return to the caller. The frontend is responsible for tracking which chunk of data to request. 
+set of data to return to the caller. The frontend is responsible for tracking which chunk of data to request.
 */
-function pagination(pokemonCollection, offset, limit) {
+export function pagination(pokemonCollection, offset, limit) {
   if (pokemonCollection == null) {
     return pokemonCollection;
   } else if (offset <= pokemonCollection.length) {
