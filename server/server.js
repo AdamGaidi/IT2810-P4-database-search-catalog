@@ -6,6 +6,7 @@ import { Prisma } from "prisma-binding";
 const PORT = process.env.PORT || 4000;
 
 const server = new ApolloServer({
+  cors: true,
   typeDefs,
   resolvers,
   // The connection to the database

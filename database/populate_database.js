@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const pokemon = require("../src/assets/pokemon.js");
+const pokemon = require("./pokemon.js");
 
 var mutation = `mutation CreatePokemon(
   $name: String!
