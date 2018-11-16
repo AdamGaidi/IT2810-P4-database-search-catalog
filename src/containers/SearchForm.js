@@ -8,6 +8,11 @@ import FontAwesome from "components/FontAwesome";
 import Card from "components/Card";
 import "./SearchForm.css";
 
+/**
+ * The search form component, which is responsible for getting the input from user.
+ * The user can input a search string, apply filters and choose sorting.
+ */
+
 const SearchForm = ({ handleSubmit, pristine, reset, submitting }) => {
   const types = Object.keys(pokemonTypes).map((type, i) => {
     return <Checkbox key={type + i} type={type} />;

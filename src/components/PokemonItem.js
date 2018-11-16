@@ -6,6 +6,11 @@ import Card from "components/Card";
 import FontAwesome from "components/FontAwesome";
 import "./css/PokemonItem.css";
 
+/**
+ * A pokemon item component showing an overview of the pokemon.
+ * This type of component is loaded when getting search result
+ */
+
 const PokemonItem = ({ imgSrc, stars, name, types, number, onClick }) => {
   return (
     <Card className="PokemonItem">

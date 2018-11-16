@@ -6,6 +6,11 @@ import Card from "components/Card";
 import Stat from "components/Stat";
 import "./css/PokemonDetailItem.css";
 
+/**
+ * A component showing a detailed view about the pokemon,
+ * with larger image and added stats.
+ */
+
 const PokemonDetailItem = ({
   onClick,
   imgSrc,

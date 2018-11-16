@@ -101,6 +101,8 @@ export const typeDefs = gql`
 // Resolvers define the technique for fetching the types in the schema.
 export const resolvers = {
   Query: {
+    // Gets all pokemon matching the search criteria, then filters and orders the result.
+    // Returns pagination, so that not all are loaded at once.
     allPokemon: async (root, args, context, info) => {
       const where = args.searchString
         ? {
@@ -132,6 +134,7 @@ export const resolvers = {
   },
 
   Mutation: {
+    // Creates a pokemon based on input
     createPokemon: (root, args, context, info) => {
       return context.db.mutation.createPokemon(
         {
@@ -152,6 +155,7 @@ export const resolvers = {
         info
       );
     },
+    // Deletes pokemon by name
     deletePokemon: (root, args, context, info) => {
       return context.db.mutation.deletePokemon(
         {
@@ -162,6 +166,7 @@ export const resolvers = {
         info
       );
     },
+    // Increments the star count of the pokemon by name
     starPokemon: async (root, args, context, info) => {
       const data = await context.db.query.pokemon({
         where: {
@@ -181,6 +186,7 @@ export const resolvers = {
         info
       );
     },
+    // Decrements the star count of the pokemon by name
     unStarPokemon: async (root, args, context, info) => {
       const data = await context.db.query.pokemon({
         where: {
